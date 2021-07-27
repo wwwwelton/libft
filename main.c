@@ -8,6 +8,9 @@
 
 int	main(void)
 {
+	//Part 1 - Libc functions
+	printf(BHRED "Part 1 - Libc functions\n" reset);
+
 	//ft_isalpha
 	int	i = -128;
 	int	check_isalpha_or = 0;
@@ -866,6 +869,61 @@ int	main(void)
 	// printf("\nOR:%s\n", strdup_ft);
 
 	free(strdup_ft);
+
+	//Part 2 - Additional functions
+	printf(BHRED "\nPart 1 - Libc functions\n" reset);
+
+	////////////////////////////////
+	//         ft_substr          //
+	////////////////////////////////
+	char *substr_str = "Apples are round, and apples are juicy.";
+	char *res;
+
+	res = ft_substr(substr_str, 0, 6);
+	if (strcmp(res, "Apples") == 0)
+		printf(GRN "FT_SUBSTR:  [OK]" reset);
+	else
+		printf(RED "FT_SUBSTR:  [KO]" reset);
+
+	res = ft_substr("tripouille", 1, 1);
+	if (strcmp(res, "r") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	res = ft_substr("tripouille", 0, 42000);
+	if (strcmp(res, "tripouille") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	res = ft_substr("tripouille", 100, 1);
+	if (strcmp(res, "") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	res = ft_substr("1", 42, 42000000);
+	if (strcmp(res, "") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	res = ft_substr("42", 0, 0);
+	if (strcmp(res, "") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (ft_substr(NULL, 5, 100) == NULL)
+		printf(GRN " [OK]" reset);
+	else
+		printf(YEL " [KO]" reset);
+
+	//visual debug
+	// printf("\nRES:%s$\n", ft_substr("", 0, 100));
+
+	free(res);
 
 	return (0);
 }
