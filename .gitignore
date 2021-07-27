@@ -1,0 +1,10 @@
+#main.c
+a.out
+#ANSI-color-codes.h
+.vscode
+libft-war-machine/
+*.o
+*.a
+*.so
+libftTester/
+Libftest/
