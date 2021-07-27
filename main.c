@@ -916,14 +916,59 @@ int	main(void)
 		printf(RED " [KO]" reset);
 
 	if (ft_substr(NULL, 5, 100) == NULL)
-		printf(GRN " [OK]" reset);
+		printf(GRN " [OK]\n" reset);
 	else
-		printf(YEL " [KO]" reset);
+		printf(YEL " [KO]\n" reset);
 
 	//visual debug
 	// printf("\nRES:%s$\n", ft_substr("", 0, 100));
 
 	free(res);
+
+	////////////////////////////////
+	//         ft_strjoin          //
+	////////////////////////////////
+	char const *strjoin_str_1 = "Apples are round,";      //17 + \0 => 18
+	char const *strjoin_str_2 = " and apples are juicy."; //22 + \0 => 23
+	char *strjoin_str_res;
+
+	strjoin_str_res = ft_strjoin(strjoin_str_1, strjoin_str_2);
+	if (strcmp(strjoin_str_res, "Apples are round, and apples are juicy.") == 0)
+		printf(GRN "FT_STRJOIN: [OK]" reset);
+	else
+		printf(RED "FT_STRJOIN: [KO]" reset);
+
+	if (strjoin_str_res[38] == '.')
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strjoin_str_res[39] == '\0')
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	strjoin_str_res = ft_strjoin("AAAAAAAAAAAAAAAAAAAAAAA", "AAAAAAAAAAAAAAAAAAAAAAA");
+	if (strcmp(strjoin_str_res, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"))
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strjoin_str_res[48] == '\0')
+		printf(GRN " [OK]\n" reset);
+	else
+		printf(RED " [KO]\n" reset);
+
+	//visual debug
+	// printf("\nRES: $%s$\n", ft_strjoin(strjoin_str_1, strjoin_str_2));
+	// printf("\nRES: $%c$\n", strjoin_str_res[38]);
+	// printf("\n45 => A: $%c$", strjoin_str_res[45]);
+	// printf("\n46 => A: $%c$", strjoin_str_res[46]);
+	// printf("\n47 => 0: $%c$\n", strjoin_str_res[47]);
+	// printf("\nRES: $AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA$");
+	// printf("\nRES: $%s$\n", strjoin_str_res);
+
+	free(strjoin_str_res);
 
 	return (0);
 }
