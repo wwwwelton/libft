@@ -2,9 +2,14 @@
 #include <ctype.h>
 #include <string.h>
 #include <bsd/string.h>
-#include "ANSI-color-codes.h"
 
 #include "libft.h"
+
+#define BHRED "\e[1;91m"
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define YEL "\e[0;33m"
+#define reset "\e[0m"
 
 int	main(void)
 {
