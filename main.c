@@ -916,6 +916,10 @@ int	main(void)
 		printf(RED " [KO]" reset);
 
 	if (ft_substr(NULL, 5, 100) == NULL)
+		printf(GRN " [OK]" reset);
+	else
+		printf(YEL " [KO]" reset);
+	if (ft_substr(NULL, 5, 100) == NULL)
 		printf(GRN " [OK]\n" reset);
 	else
 		printf(YEL " [KO]\n" reset);
@@ -968,7 +972,64 @@ int	main(void)
 	// printf("\nRES: $AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA$");
 	// printf("\nRES: $%s$\n", strjoin_str_res);
 
-	free(strjoin_str_res);
+	////////////////////////////////
+	//         ft_strtrim          //
+	////////////////////////////////
+	char *strtrim_str_res;
+
+	strtrim_str_res = ft_strtrim("lorem \n ipsum \t dolor \n sit \t amet", " ");
+	if (strcmp(strtrim_str_res, "lorem \n ipsum \t dolor \n sit \t amet") == 0)
+		printf(GRN "FT_STRTRIM: [OK]" reset);
+	else
+		printf(RED "FT_STRTRIM: [KO]" reset);
+
+	strtrim_str_res = ft_strtrim("lorem ipsum dolor sit amet", "te");
+	if (strcmp(strtrim_str_res, "lorem ipsum dolor sit am") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	strtrim_str_res = ft_strtrim(" lorem ipsum dolor sit amet", "l ");
+	if (strcmp(strtrim_str_res, "orem ipsum dolor sit amet") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	strtrim_str_res = ft_strtrim("          ", " ");
+	if (strcmp(strtrim_str_res, "") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	strtrim_str_res = ft_strtrim("lorem ipsum dolor sit amet", "tel");
+	if (strcmp(strtrim_str_res, "orem ipsum dolor sit am") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	strtrim_str_res = ft_strtrim("   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ", " \n\t");
+	if (strcmp(strtrim_str_res, "Hello \t  Please\n Trim me !") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	strtrim_str_res = ft_strtrim(NULL, NULL);
+	if (strtrim_str_res == NULL)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	strtrim_str_res = ft_strtrim("", "");
+	if (strcmp(strtrim_str_res, "") == 0)
+		printf(GRN " [OK]\n" reset);
+	else
+		printf(RED " [KO]\n" reset);
+
+	//visual debug
+	// printf("\nEXP: $orem ipsum dolor sit am$     => SET: tel");
+	// printf("\nRES: $%s$\n", ft_strtrim("lorem ipsum dolor sit amet", "tel"));
+
+	free(strtrim_str_res);
 
 	return (0);
 }
