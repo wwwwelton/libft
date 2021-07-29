@@ -876,7 +876,7 @@ int	main(void)
 	free(strdup_ft);
 
 	//Part 2 - Additional functions
-	printf(BHRED "\nPart 1 - Libc functions\n" reset);
+	printf(BHRED "\nPart 2 - Additional functions\n" reset);
 
 	////////////////////////////////
 	//         ft_substr          //
@@ -1036,5 +1036,80 @@ int	main(void)
 
 	free(strtrim_str_res);
 
+	// ////////////////////////////////
+	// //         ft_split           //
+	// ////////////////////////////////
+	// char	ft_split_str[] = { "The-semiotics-spherical-chamber." };
+	// char	**ft_split_res;
+
+	// ft_split_res = ft_split(ft_split_str, '-');
+
+	// // if (strcmp(ft_split_res[0], "The") == 0)
+	// // 	printf(GRN "FT_SPLIT: [OK]" reset);
+	// // else
+	// // 	printf(RED "FT_SPLIT: [KO]" reset);
+
+	// //visual debug
+	// // printf("\nEXP: $orem ipsum dolor sit am$     => SET: tel");
+	// printf("\nRES[0]: $%s$", ft_split_res[0]);
+	// printf("\nRES[1]: $%s$", ft_split_res[1]);
+	// printf("\nRES[2]: $%s$", ft_split_res[2]);
+	// printf("\nRES[3]: $%s$\n", ft_split_res[3]);
+
+	// free(ft_split_res);
+
+	////////////////////////////////
+	//         ft_itoa            //
+	////////////////////////////////
+	if (strcmp(ft_itoa(INT_MIN), "-2147483648") == 0)
+		printf(GRN "FT_ATOI:    [OK]" reset);
+	else
+		printf(RED "FT_ATOI:    [KO]" reset);
+
+	if (strcmp(ft_itoa(INT_MAX), "2147483647") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strcmp(ft_itoa(-2147483648LL), "-2147483648") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strcmp(ft_itoa(9), "9") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strcmp(ft_itoa(-9), "-9") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strcmp(ft_itoa(10), "10") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strcmp(ft_itoa(-10), "-10") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strcmp(ft_itoa(-1), "-1") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strcmp(ft_itoa(0), "0") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	//visual debug
+	// printf("\nRES:%s", ft_itoa(2147483647));
+	// printf("\nRES:%s", ft_itoa(-2147483648));
+
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	return (0);
 }
