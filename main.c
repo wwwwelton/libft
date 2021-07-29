@@ -16,6 +16,11 @@ char ft_strmapi_ft(unsigned int i, char c)
 	return (c + i);
 }
 
+void ft_striteri_ft(unsigned int i, char *str)
+{
+	*str = *str + i;
+}
+
 int	main(void)
 {
 	//Part 1 - Libc functions
@@ -1116,7 +1121,7 @@ int	main(void)
 	// printf("\nRES:%s", ft_itoa(-2147483648));
 
 	////////////////////////////////
-	//         ft_strmapi            //
+	//         ft_strmapi         //
 	////////////////////////////////
 	char	*strmapi_res;
 	void	*strmapi_f;
@@ -1147,9 +1152,57 @@ int	main(void)
 	else
 		printf(RED " [KO]\n" reset);
 
+	free(strmapi_res);
+
 	//visual debug
 	// printf("\nRES:%s", ft_itoa(2147483647));
 	// printf("\nRES:%s", strmapi_res);
+
+	////////////////////////////////
+	//         ft_striteri        //
+	////////////////////////////////
+	char	striteri_str[] = { "AAAAAAAAAAAA" };
+	void	*striteri_f;
+
+	striteri_f = ft_striteri_ft;
+
+	ft_striteri(striteri_str, striteri_f);
+	if (strcmp(striteri_str, "ABCDEFGHIJKL") == 0)
+		printf(GRN "FT_STRITERI:[OK]" reset);
+	else
+		printf(RED "FT_STRITERI:[KO]" reset);
+
+	// printf("\nRES:%s", striteri_str);
+
+	memset(striteri_str, 0, strlen(striteri_str));
+	ft_striteri(NULL, striteri_f);
+	if (strcmp(striteri_str, "") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	ft_striteri(striteri_str, NULL);
+	if (strcmp(striteri_str, "") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	ft_striteri("", striteri_f);
+	if (strcmp(striteri_str, "") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	strcpy(striteri_str, "0000000000");
+	ft_striteri(striteri_str, striteri_f);
+	if (strcmp(striteri_str, "0123456789") == 0)
+		printf(GRN " [OK]\n" reset);
+	else
+		printf(RED " [KO]\n" reset);
+
+	//visual debug
+	// printf("\nRES:%s", ft_itoa(2147483647));
+	// printf("\nRES:%s", striteri_str);
 
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	return (0);
