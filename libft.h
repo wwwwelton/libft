@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/07/28 17:16:25 by wleite           ###   ########.fr       */
+/*   Updated: 2021/07/28 23:47:43 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 
 char	*ft_itoa(int n);
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 #endif
