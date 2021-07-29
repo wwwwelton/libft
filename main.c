@@ -1157,7 +1157,6 @@ int	main(void)
 	free(strmapi_res);
 
 	//visual debug
-	// printf("\nRES:%s", ft_itoa(2147483647));
 	// printf("\nRES:%s", strmapi_res);
 
 	////////////////////////////////
@@ -1170,9 +1169,9 @@ int	main(void)
 
 	ft_striteri(striteri_str, striteri_f);
 	if (strcmp(striteri_str, "ABCDEFGHIJKL") == 0)
-		printf(GRN "FT_STRITERI:[OK]" reset);
+		printf(GRN "FT_STRITERI:     [OK]" reset);
 	else
-		printf(RED "FT_STRITERI:[KO]" reset);
+		printf(RED "FT_STRITERI:     [KO]" reset);
 
 	// printf("\nRES:%s", striteri_str);
 
@@ -1203,11 +1202,10 @@ int	main(void)
 		printf(RED " [KO]\n" reset);
 
 	//visual debug
-	// printf("\nRES:%s", ft_itoa(2147483647));
 	// printf("\nRES:%s", striteri_str);
 
 	////////////////////////////////
-	//         ft_putchar_fd        //
+	//         ft_putchar_fd      //
 	////////////////////////////////
 	char	putchar_c;
 	int		putchar_fd_read;
@@ -1221,9 +1219,9 @@ int	main(void)
 	read(putchar_fd_read, &putchar_c, 1);
 
 	if (putchar_c == 'a')
-		printf(GRN "FT_PUTCHAR_FD:[OK]" reset);
+		printf(GRN "FT_PUTCHAR_FD:   [OK]" reset);
 	else
-		printf(RED "FT_PUTCHAR_FD:[KO]" reset);
+		printf(RED "FT_PUTCHAR_FD:   [KO]" reset);
 	//READ WRITE 'a'
 
 	//READ WRITE 'Z'
@@ -1260,18 +1258,88 @@ int	main(void)
 	read(putchar_fd_read, &putchar_c, 1);
 
 	if (putchar_c == '\0')
-		printf(GRN " [OK]" reset);
+		printf(GRN " [OK]\n" reset);
 	else
-		printf(RED " [KO]" reset);
+		printf(RED " [KO]\n" reset);
 	//READ WRITE '\0'
 
 
 	//visual debug
-	// printf("\nRES:%s", ft_itoa(2147483647));
 	// printf("\nFD:%c", putchar_c);
 
 	close(putchar_fd_read);
 	close(putchar_fd_write);
+
+	////////////////////////////////
+	//         ft_putstr_fd      //
+	////////////////////////////////
+	char	*putstr_str;
+	char	putstr_str_d[] = { -1, -2, -3, -4, -5, -6, '\0' };
+	int		putstr_fd_read;
+	int		putstr_fd_write;
+
+	putstr_str = (char *)malloc(sizeof(char) * 30);
+
+	//READ WRITE "They floated in the center"
+	memset(putstr_str, 0, 30);
+	putstr_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
+	ft_putstr_fd("They floated in the center", putstr_fd_write);
+
+	putstr_fd_read = open("file.z", O_RDONLY);
+	read(putstr_fd_read, putstr_str, ft_strlen("They floated in the center"));
+
+	if (strcmp(putstr_str, "They floated in the center") == 0)
+		printf(GRN "FT_PUTSTR_FD:    [OK]" reset);
+	else
+		printf(RED "FT_PUTSTR_FD:    [KO]" reset);
+	//READ WRITE "They floated in the center"
+
+	//READ WRITE "He tried to walk past her back into the dark"
+	memset(putstr_str, 0, 30);
+	putstr_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
+	ft_putstr_fd("He tried to walk past her back into the dark", putstr_fd_write);
+
+	putstr_fd_read = open("file.z", O_RDONLY);
+	read(putstr_fd_read, putstr_str, ft_strlen("He tried to walk past her back into the dark"));
+
+	if (strcmp(putstr_str, "He tried to walk past her back into the dark") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+	//READ WRITE "He tried to walk past her back into the dark"
+
+	//READ WRITE "-1, -2, -3, -4, -5, -6, '\0'"
+	memset(putstr_str, 0, 30);
+	putstr_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
+	ft_putstr_fd(putstr_str_d, putstr_fd_write);
+
+	putstr_fd_read = open("file.z", O_RDONLY);
+	read(putstr_fd_read, putstr_str, ft_strlen(putstr_str_d));
+
+	if (strcmp(putstr_str, putstr_str_d) == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+	//READ WRITE "-1, -2, -3, -4, -5, -6, '\0'"
+
+	//READ WRITE "NULL"
+	putstr_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
+	ft_putstr_fd(NULL, putstr_fd_write);
+
+	putstr_fd_read = open("file.z", O_RDONLY);
+	read(putstr_fd_read, putstr_str, ft_strlen(putstr_str_d));
+
+	if (strcmp(putstr_str, putstr_str_d) == 0)
+		printf(GRN " [OK]\n" reset);
+	else
+		printf(RED " [KO]\n" reset);
+	//READ WRITE "NULL"
+
+	//visual debug
+	// printf("\nFD:%s", putstr_str);
+
+	close(putstr_fd_read);
+	close(putstr_fd_write);
 
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	return (0);
