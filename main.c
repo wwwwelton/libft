@@ -11,6 +11,11 @@
 #define YEL "\e[0;33m"
 #define reset "\e[0m"
 
+char ft_strmapi_ft(unsigned int i, char c)
+{
+	return (c + i);
+}
+
 int	main(void)
 {
 	//Part 1 - Libc functions
@@ -1102,14 +1107,50 @@ int	main(void)
 		printf(RED " [KO]" reset);
 
 	if (strcmp(ft_itoa(0), "0") == 0)
-		printf(GRN " [OK]" reset);
+		printf(GRN " [OK]\n" reset);
 	else
-		printf(RED " [KO]" reset);
+		printf(RED " [KO]\n" reset);
 
 	//visual debug
 	// printf("\nRES:%s", ft_itoa(2147483647));
 	// printf("\nRES:%s", ft_itoa(-2147483648));
 
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	////////////////////////////////
+	//         ft_strmapi            //
+	////////////////////////////////
+	char	*strmapi_res;
+	void	*strmapi_f;
+
+	strmapi_f = ft_strmapi_ft;
+
+	strmapi_res = ft_strmapi("AAAAAAAAAAAAAAAAAAAAAAAAAA", strmapi_f);
+	if (strcmp(strmapi_res, "ABCDEFGHIJKLMNOPQRSTUVWXYZ") == 0)
+		printf(GRN "FT_STRMAPI: [OK]" reset);
+	else
+		printf(RED "FT_STRMAPI:    [KO]" reset);
+
+	strmapi_res = ft_strmapi(NULL, strmapi_f);
+	if (strmapi_res == NULL)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	strmapi_res = ft_strmapi("AAAAAAAAAAAAAAAAAAAAAAAAAA", NULL);
+	if (strmapi_res == NULL)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	strmapi_res = ft_strmapi("", strmapi_f);
+	if (strcmp(strmapi_res, "") == 0)
+		printf(GRN " [OK]\n" reset);
+	else
+		printf(RED " [KO]\n" reset);
+
+	//visual debug
+	// printf("\nRES:%s", ft_itoa(2147483647));
+	// printf("\nRES:%s", strmapi_res);
+
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	return (0);
 }
