@@ -2,6 +2,8 @@
 #include <ctype.h>
 #include <string.h>
 #include <bsd/string.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 #include "libft.h"
 
@@ -1203,6 +1205,73 @@ int	main(void)
 	//visual debug
 	// printf("\nRES:%s", ft_itoa(2147483647));
 	// printf("\nRES:%s", striteri_str);
+
+	////////////////////////////////
+	//         ft_putchar_fd        //
+	////////////////////////////////
+	char	putchar_c;
+	int		putchar_fd_read;
+	int		putchar_fd_write;
+
+	//READ WRITE 'a'
+	putchar_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
+	ft_putchar_fd('a', putchar_fd_write);
+
+	putchar_fd_read = open("file.z", O_RDONLY);
+	read(putchar_fd_read, &putchar_c, 1);
+
+	if (putchar_c == 'a')
+		printf(GRN "FT_PUTCHAR_FD:[OK]" reset);
+	else
+		printf(RED "FT_PUTCHAR_FD:[KO]" reset);
+	//READ WRITE 'a'
+
+	//READ WRITE 'Z'
+	putchar_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
+	ft_putchar_fd('Z', putchar_fd_write);
+
+	putchar_fd_read = open("file.z", O_RDONLY);
+	read(putchar_fd_read, &putchar_c, 1);
+
+	if (putchar_c == 'Z')
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+	//READ WRITE 'Z'
+
+	//READ WRITE '-1'
+	putchar_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
+	ft_putchar_fd(-1, putchar_fd_write);
+
+	putchar_fd_read = open("file.z", O_RDONLY);
+	read(putchar_fd_read, &putchar_c, 1);
+
+	if (putchar_c == -1)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+	//READ WRITE '-1'
+
+	//READ WRITE '\0'
+	putchar_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
+	ft_putchar_fd('\0', putchar_fd_write);
+
+	putchar_fd_read = open("file.z", O_RDONLY);
+	read(putchar_fd_read, &putchar_c, 1);
+
+	if (putchar_c == '\0')
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+	//READ WRITE '\0'
+
+
+	//visual debug
+	// printf("\nRES:%s", ft_itoa(2147483647));
+	// printf("\nFD:%c", putchar_c);
+
+	close(putchar_fd_read);
+	close(putchar_fd_write);
 
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	return (0);
