@@ -1267,11 +1267,12 @@ int	main(void)
 	//visual debug
 	// printf("\nFD:%c", putchar_c);
 
+	unlink("./file.z");
 	close(putchar_fd_read);
 	close(putchar_fd_write);
 
 	////////////////////////////////
-	//         ft_putstr_fd      //
+	//         ft_putstr_fd       //
 	////////////////////////////////
 	char	*putstr_str;
 	char	putstr_str_d[] = { -1, -2, -3, -4, -5, -6, '\0' };
@@ -1338,6 +1339,7 @@ int	main(void)
 	//visual debug
 	// printf("\nFD:%s", putstr_str);
 
+	unlink("./file.z");
 	free(putstr_str);
 	close(putstr_fd_read);
 	close(putstr_fd_write);
@@ -1409,6 +1411,103 @@ int	main(void)
 	else
 		printf(RED " [KO]\n" reset);
 	//READ WRITE "NULL"
+
+	unlink("./file.z");
+	free(putendl_str);
+	close(putendl_fd_read);
+	close(putendl_fd_write);
+
+	////////////////////////////////
+	//         ft_putnbr_fd       //
+	////////////////////////////////
+	char	*putnbr_str;
+	int		putnbr_fd_read;
+	int		putnbr_fd_write;
+
+	putnbr_str = (char *)malloc(sizeof(char) * 30);
+
+	//READ WRITE "2147483647"
+	memset(putnbr_str, 0, 30);
+	putnbr_fd_write = open("file_2.z", O_WRONLY | O_CREAT, 0777);
+	ft_putnbr_fd(2147483647, putnbr_fd_write);
+	lseek(putnbr_fd_write, SEEK_SET, 0);
+
+	putnbr_fd_read = open("file_2.z", O_RDONLY);
+	read(putnbr_fd_read, putnbr_str, 30);
+
+	if (strcmp(putnbr_str, "2147483647") == 0)
+		printf(GRN "FT_PUTNBR_FD:    [OK]" reset);
+	else
+		printf(RED "FT_PUTNBR_FD:    [KO]" reset);
+	unlink("./file_2.z");
+	//READ WRITE "2147483647"
+
+	//READ WRITE "-2147483648"
+	memset(putnbr_str, 0, 30);
+	putnbr_fd_write = open("file_2.z", O_WRONLY | O_CREAT, 0777);
+	ft_putnbr_fd(-2147483648, putnbr_fd_write);
+	lseek(putnbr_fd_write, SEEK_SET, 0);
+
+	putnbr_fd_read = open("file_2.z", O_RDONLY);
+	read(putnbr_fd_read, putnbr_str, 30);
+
+	if (strcmp(putnbr_str, "-2147483648") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+	unlink("./file_2.z");
+	//READ WRITE "-2147483648"
+
+	//READ WRITE "0"
+	memset(putnbr_str, 0, 30);
+	putnbr_fd_write = open("file_2.z", O_WRONLY | O_CREAT, 0777);
+	ft_putnbr_fd(0, putnbr_fd_write);
+	lseek(putnbr_fd_write, SEEK_SET, 0);
+
+	putnbr_fd_read = open("file_2.z", O_RDONLY);
+	read(putnbr_fd_read, putnbr_str, 30);
+
+	if (strcmp(putnbr_str, "0") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+	unlink("./file_2.z");
+	//READ WRITE "0"
+
+	//READ WRITE "0"
+	memset(putnbr_str, 0, 30);
+	putnbr_fd_write = open("file_2.z", O_WRONLY | O_CREAT, 0777);
+	ft_putnbr_fd(0, putnbr_fd_write);
+	lseek(putnbr_fd_write, SEEK_SET, 0);
+
+	putnbr_fd_read = open("file_2.z", O_RDONLY);
+	read(putnbr_fd_read, putnbr_str, 30);
+
+	if (strcmp(putnbr_str, "0") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+	unlink("./file_2.z");
+	//READ WRITE "0"
+
+	//READ WRITE "10"
+	memset(putnbr_str, 0, 30);
+	putnbr_fd_write = open("file_2.z", O_WRONLY | O_CREAT, 0777);
+	ft_putnbr_fd(10, putnbr_fd_write);
+	lseek(putnbr_fd_write, SEEK_SET, 0);
+
+	putnbr_fd_read = open("file_2.z", O_RDONLY);
+	read(putnbr_fd_read, putnbr_str, 30);
+
+	if (strcmp(putnbr_str, "10") == 0)
+		printf(GRN " [OK]\n" reset);
+	else
+		printf(RED " [KO]\n" reset);
+	unlink("./file_2.z");
+	//READ WRITE "10"
+
+	//visual debug
+	// printf("\nFD: %s", putnbr_str);
 
 
 	free(putendl_str);
