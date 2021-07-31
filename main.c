@@ -4,6 +4,7 @@
 #include <bsd/string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <time.h>
 
 #include "libft.h"
 
@@ -18,18 +19,27 @@ char ft_strmapi_ft(unsigned int i, char c)
 	return (c + i);
 }
 
-void ft_striteri_ft(unsigned int i, char *str)
+void ft_striteri_ft(unsigned int i, char *c)
 {
-	*str = *str + i;
+	*c = *c + i;
 }
 
 int	main(void)
 {
+	int	i;
+	clock_t t;
+	double time_taken;
+
 	//Part 1 - Libc functions
 	printf(BHRED "Part 1 - Libc functions\n" reset);
 
-	//ft_isalpha
-	int	i = -128;
+
+	////////////////////////////////
+	//         ft_isalpha         //
+	////////////////////////////////
+	t = clock();
+
+	i = -128;
 	int	check_isalpha_or = 0;
 	int	check_isalpha_ft = 0;
 
@@ -44,11 +54,19 @@ int	main(void)
 		i++;
 	}
 	if (check_isalpha_or == check_isalpha_ft)
-		printf(GRN "FT_ISALPHA: [OK]\n" reset);
+		printf(GRN "FT_ISALPHA: [OK]" reset);
 	else
-		printf(RED "FT_ISALPHA: [KO]\n" reset);
+		printf(RED "FT_ISALPHA: [KO]" reset);
 
-	//ft_isdigit
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_isdigit         //
+	////////////////////////////////
+	t = clock();
+
 	i = -128;
 	int	check_isdigit_or = 0;
 	int	check_isdigit_ft = 0;
@@ -64,11 +82,19 @@ int	main(void)
 		i++;
 	}
 	if (check_isdigit_or == check_isdigit_ft)
-		printf(GRN "FT_ISDIGIT: [OK]\n" reset);
+		printf(GRN "FT_ISDIGIT: [OK]" reset);
 	else
-		printf(RED "FT_ISDIGIT: [KO]\n" reset);
+		printf(RED "FT_ISDIGIT: [KO]" reset);
 
-	//ft_isalnum
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_isalnum         //
+	////////////////////////////////
+	t = clock();
+
 	i = -128;
 	int	check_isalnum_or = 0;
 	int	check_isalnum_ft = 0;
@@ -84,11 +110,19 @@ int	main(void)
 		i++;
 	}
 	if (check_isalnum_or == check_isalnum_ft)
-		printf(GRN "FT_ISALNUM: [OK]\n" reset);
+		printf(GRN "FT_ISALNUM: [OK]" reset);
 	else
-		printf(RED "FT_ISALNUM: [KO]\n" reset);
+		printf(RED "FT_ISALNUM: [KO]" reset);
 
-	//ft_isascii
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_isascii         //
+	////////////////////////////////
+	t = clock();
+
 	i = -128;
 	int	check_isascii_or = 0;
 	int	check_isascii_ft = 0;
@@ -104,11 +138,19 @@ int	main(void)
 		i++;
 	}
 	if (check_isascii_or == check_isascii_ft)
-		printf(GRN "FT_ISASCII: [OK]\n" reset);
+		printf(GRN "FT_ISASCII: [OK]" reset);
 	else
-		printf(RED "FT_ISASCII: [KO]\n" reset);
+		printf(RED "FT_ISASCII: [KO]" reset);
 
-	//ft_isprint
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_isprint         //
+	////////////////////////////////
+	t = clock();
+
 	i = -128;
 	int	check_isprint_or = 0;
 	int	check_isprint_ft = 0;
@@ -124,11 +166,19 @@ int	main(void)
 		i++;
 	}
 	if (check_isprint_or == check_isprint_ft)
-		printf(GRN "FT_ISPRINT: [OK]\n" reset);
+		printf(GRN "FT_ISPRINT: [OK]" reset);
 	else
-		printf(RED "FT_ISPRINT: [KO]\n" reset);
+		printf(RED "FT_ISPRINT: [KO]" reset);
 
-	//ft_strlen
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_strlen          //
+	////////////////////////////////
+	t = clock();
+
 	if (strlen("") == ft_strlen(""))
 		printf(GRN "FT_STRLEN:  [OK]" reset);
 	else
@@ -140,11 +190,19 @@ int	main(void)
 		printf(RED " [KO]" reset);
 
 	if (strlen("Opnf") == ft_strlen("Opnf"))
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
-	//ft_memset
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_memset          //
+	////////////////////////////////
+	t = clock();
+
 	char	str_memset[11];
 
 	if (str_memset == ft_memset(str_memset, 'c', 5) && memcmp(str_memset, "ccccc", 5) == 0)
@@ -163,15 +221,23 @@ int	main(void)
 		printf(RED " [KO]" reset);
 
 	if (str_memset == ft_memset(str_memset, -1, 11))
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	//printf("OR:%s\nFT:%s\n", str_memset_or, str_memset_ft);
 	//printf("OR:%s\nFT:%s\n", str_memset_or_e, str_memset_ft_e);
 
-	//ft_bzero
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_bzero           //
+	////////////////////////////////
+	t = clock();
+
 	char	str_bzero_or[11];
 	char	str_bzero_ft[11];
 	char	str_bzero_or_e[2];
@@ -199,11 +265,19 @@ int	main(void)
 		printf(RED "FT_BZERO:   [KO]" reset);
 
 	if (strcmp(str_bzero_or_e, str_bzero_ft_e) == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
-	//ft_memcpy
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_memcpy          //
+	////////////////////////////////
+	t = clock();
+
 	char	str_memcpy[11];
 
 	if (str_memcpy == ft_memcpy(str_memcpy, "zyxwvutsrqponmlkjihgfedcba", 14))
@@ -229,14 +303,22 @@ int	main(void)
 	char	str_memcpy_src[17] = { "Lorem Ipsum is s" };
 
 	if (strcmp(str_memcpy_src, "Lorem Ipsum is s" ) == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("VAR: %s\n", str_memcpy_src);
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
 
-	//ft_memmove
+
+	////////////////////////////////
+	//         ft_memmove         //
+	////////////////////////////////
+	t = clock();
+
 	char	str_memmove_or[0xF0];
 	char	str_memmove_ft[0xF0];
 	char	*str_memmove_data = "Lorem Ipsum is simply dummy text of the printing";
@@ -262,14 +344,21 @@ int	main(void)
 	ft_memmove(str_memmove_dest, str_memmove_src, 29);
 
 	if (strcmp(str_memmove_src,"There are many variations of") == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("OR:%s\n\nFT:%s\n", str_memmove_or, str_memmove_ft);
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
 
-	//ft_strlcpy
+	////////////////////////////////
+	//         ft_strlcpy         //
+	////////////////////////////////
+	t = clock();
+
 	const char	str_strlcpy_or_src[21] = { "xGOcndW9M12J81QPzIva" };
 	const char	str_strlcpy_ft_src[21] = { "xGOcndW9M12J81QPzIva" };
 	char	str_strlcpy_or_dest[11];
@@ -301,15 +390,23 @@ int	main(void)
 
 	if (strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, -1)
 	== ft_strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, -1))
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("%zu\n", strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, -1));
 	// printf("%zu\n", ft_strlcpy(str_strlcpy_ft_dest, str_strlcpy_ft_src, -1));
 
-	//ft_strlcat
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_strlcat         //
+	////////////////////////////////
+	t = clock();
+
 	char	*str_strlcat_or_dest;
 	char	*str_strlcat_ft_dest;
 	size_t	size_strlcat_or;
@@ -408,17 +505,24 @@ int	main(void)
 	size_strlcat_or = strlcat(str_strlcat_or_dest, "Nome", 5);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "Nome", 5);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 
 	free(str_strlcat_or_dest);
 	free(str_strlcat_ft_dest);
 
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
 
 
-	//ft_toupper
+	////////////////////////////////
+	//         ft_toupper         //
+	////////////////////////////////
+	t = clock();
+
 	i = 0;
 	int	check_toupper_or = 0;
 	int	check_toupper_ft = 0;
@@ -436,11 +540,20 @@ int	main(void)
 		i++;
 	}
 	if (check_toupper_or == check_toupper_ft)
-		printf(GRN "FT_TOUPPER: [OK]\n" reset);
+		printf(GRN "FT_TOUPPER: [OK]" reset);
 	else
-		printf(RED "FT_TOUPPER: [KO]\n" reset);
+		printf(RED "FT_TOUPPER: [KO]" reset);
 
-	//ft_tolower
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
+	////////////////////////////////
+	//         ft_tolower         //
+	////////////////////////////////
+	t = clock();
+
 	i = 0;
 	int	check_tolower_or = 0;
 	int	check_tolower_ft = 0;
@@ -458,11 +571,20 @@ int	main(void)
 		i++;
 	}
 	if (check_tolower_or == check_tolower_ft)
-		printf(GRN "FT_TOLOWER: [OK]\n" reset);
+		printf(GRN "FT_TOLOWER: [OK]" reset);
 	else
-		printf(RED "FT_TOLOWER: [KO]\n" reset);
+		printf(RED "FT_TOLOWER: [KO]" reset);
 
-	//ft_strchr
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
+	////////////////////////////////
+	//         ft_strchr          //
+	////////////////////////////////
+	t = clock();
+
 	char	check_strchr_or[] = { "mIsG8eZyTKgK2kz6btzg" };
 	char	check_strchr_ft[] = { "mIsG8eZyTKgK2kz6btzg" };
 	char	*check_strchr_or_r;
@@ -496,11 +618,19 @@ int	main(void)
 	check_strchr_ft_r = ft_strchr(check_strchr_ft, 'G');
 
 	if (*check_strchr_or_r == *check_strchr_ft_r)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
-	//ft_strrchr
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_strrchr         //
+	////////////////////////////////
+	t = clock();
+
 	char	check_strrchr_or[] = { "mIsG8eZyTKgtzgK2kz6b" };
 	char	check_strrchr_ft[] = { "mIsG8eZyTKgtzgK2kz6b" };
 	char	*check_strrchr_or_r;
@@ -534,15 +664,24 @@ int	main(void)
 	check_strrchr_ft_r = ft_strrchr(check_strrchr_ft, 'g');
 
 	if (*check_strrchr_or_r == *check_strrchr_ft_r)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("\nOR:%s ", check_strrchr_or_r);
 	// printf("FT:%s\n", check_strrchr_ft_r);
 
-	//ft_strncmp
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
+	////////////////////////////////
+	//         ft_strncmp         //
+	////////////////////////////////
+	t = clock();
+
 	if (ft_strncmp("PrzAWztGNNXedA0idZJp", "PrzAWztGNNXedA0idZJp", 20)
 	==     strncmp("PrzAWztGNNXedA0idZJp", "PrzAWztGNNXedA0idZJp", 20))
 		printf(GRN "FT_STRNCMP: [OK]" reset);
@@ -578,9 +717,9 @@ int	main(void)
 	ft_strncmp(strncmp_str, strncmp_str, 34);
 
 	if (strcmp(strncmp_str, "It is a long established fact that") == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("\nOR:%d ", strncmp("abcdefgh", "abcdwxyz", 4));
@@ -588,7 +727,15 @@ int	main(void)
 	// printf("OR: It is a long established fact that\n");
 	// printf("FT: %s\n", strncmp_str);
 
-	//ft_memchr
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_memchr          //
+	////////////////////////////////
+	t = clock();
+
 	char	check_memchr_or[] = { "mIsG8eZyAKgtzgK2kz6b" };
 	char	check_memchr_ft[] = { "mIsG8eZyAKgtzgK2kz6b" };
 	char	*check_memchr_or_r;
@@ -640,9 +787,9 @@ int	main(void)
 	ft_memchr(memchr_tab, 'b', 20);
 
 	if (strcmp(check_memchr_str, "mIsG8eZyAKgtzgK2kz6b") == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	//printf("\nOR:%s ", check_memchr_or_r);
@@ -650,7 +797,15 @@ int	main(void)
 	// printf("OR: mIsG8eZyAKgtzgK2kz6b\n");
 	// printf("FT: %s\n", check_memchr_str);
 
-	//ft_memcmp
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_memcmp          //
+	////////////////////////////////
+	t = clock();
+
 	if (ft_memcmp("PrzAWztGNNXedA0idZJp", "PrzAWztGNNXedA0idZJp", 20)
 	==     memcmp("PrzAWztGNNXedA0idZJp", "PrzAWztGNNXedA0idZJp", 20))
 		printf(GRN "FT_MEMCMP:  [OK]" reset);
@@ -696,7 +851,11 @@ int	main(void)
 	// printf("OR: traset sheets containing L\n");
 	// printf("FT: %s\n", memcmp_str);
 
-	//ft_strnstr
+	////////////////////////////////
+	//         ft_strnstr         //
+	////////////////////////////////
+	t = clock();
+
 	char	strnstr_or_big[] = { "paae3fRs6frctbs5thQp" };
 	char	strnstr_ft_big[] = { "paae3fRs6frctbs5thQp" };
 	char	strnstr_or_little[] = { "mada" };
@@ -746,15 +905,23 @@ int	main(void)
 	strnstr_ft_r = ft_strnstr("lorem ipsum dolor sit amet", "dolor", 15);
 
 	if (strnstr_or_r == NULL && strnstr_ft_r == NULL)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("\nOR:%s ", strnstr_or_r);
 	// printf("FT:%s\n", strnstr_ft_r);
 
-	//ft_atoi
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_atoi            //
+	////////////////////////////////
+	t = clock();
+
 	if (atoi(" -1234ab567") == ft_atoi(" -1234ab567"))
 		printf(GRN "FT_ATOI:    [OK]" reset);
 	else
@@ -845,9 +1012,9 @@ int	main(void)
 	ft_atoi(atoi_str);
 
 	if (strcmp(atoi_str, "2147483648") == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("\nOR:%d ", atoi("99999999999999999999999999"));
@@ -856,36 +1023,57 @@ int	main(void)
 	// printf("FT:%d\n", ft_atoi("-99999999999999999999999999"));
 	// printf("VAR: %s\n", atoi_str);
 
-	//ft_calloc
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_calloc          //
+	////////////////////////////////
+	t = clock();
+
 	char	*calloc_ft;
 
 	calloc_ft = ft_calloc(5, sizeof(char));
 	ft_strlcpy(calloc_ft, "ABCD", 5);
 
 	if (ft_strncmp(calloc_ft, "ABCD", 4) == 0)
-		printf(GRN "FT_CALLOC:  [OK]\n" reset);
+		printf(GRN "FT_CALLOC:  [OK]" reset);
 	else
-		printf(RED "FT_CALLOC:  [KO]\n" reset);
+		printf(RED "FT_CALLOC:  [KO]" reset);
 
 	//visual debug
 	// printf("\nOR:%s\n", calloc_ft);
 
 	free(calloc_ft);
 
-	//ft_strdup
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+	////////////////////////////////
+	//         ft_strdup          //
+	////////////////////////////////
+	t = clock();
+
 	char	*strdup_ft;
 
 	strdup_ft = ft_strdup("Teste");
 
 	if (strcmp(strdup_ft, "Teste") == 0)
-		printf(GRN "FT_STRDUP:  [OK]\n" reset);
+		printf(GRN "FT_STRDUP:  [OK]" reset);
 	else
-		printf(RED "FT_STRDUP:  [KO]\n" reset);
+		printf(RED "FT_STRDUP:  [KO]" reset);
 
 	//visual debug
 	// printf("\nOR:%s\n", strdup_ft);
 
 	free(strdup_ft);
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 
 	//Part 2 - Additional functions
 	printf(BHRED "\nPart 2 - Additional functions\n" reset);
@@ -893,6 +1081,8 @@ int	main(void)
 	////////////////////////////////
 	//         ft_substr          //
 	////////////////////////////////
+	t = clock();
+
 	char *substr_str = "Apples are round, and apples are juicy.";
 	char *res;
 
@@ -937,20 +1127,26 @@ int	main(void)
 	else
 		printf(YEL " [KO]" reset);
 	if (ft_substr(NULL, 5, 100) == NULL)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(YEL " [KO]\n" reset);
+		printf(YEL " [KO]" reset);
 
 	//visual debug
 	// printf("\nRES:%s$\n", ft_substr("", 0, 100));
 
 	free(res);
 
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 	////////////////////////////////
 	//         ft_strjoin          //
 	////////////////////////////////
-	char const *strjoin_str_1 = "Apples are round,";      //17 + \0 => 18
-	char const *strjoin_str_2 = " and apples are juicy."; //22 + \0 => 23
+	t = clock();
+
+	char const *strjoin_str_1 = "Apples are round,";
+	char const *strjoin_str_2 = " and apples are juicy.";
 	char *strjoin_str_res;
 
 	strjoin_str_res = ft_strjoin(strjoin_str_1, strjoin_str_2);
@@ -976,9 +1172,9 @@ int	main(void)
 		printf(RED " [KO]" reset);
 
 	if (strjoin_str_res[48] == '\0')
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("\nRES: $%s$\n", ft_strjoin(strjoin_str_1, strjoin_str_2));
@@ -989,9 +1185,15 @@ int	main(void)
 	// printf("\nRES: $AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA$");
 	// printf("\nRES: $%s$\n", strjoin_str_res);
 
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 	////////////////////////////////
 	//         ft_strtrim          //
 	////////////////////////////////
+	t = clock();
+
 	char *strtrim_str_res;
 
 	strtrim_str_res = ft_strtrim("lorem \n ipsum \t dolor \n sit \t amet", " ");
@@ -1038,9 +1240,9 @@ int	main(void)
 
 	strtrim_str_res = ft_strtrim("", "");
 	if (strcmp(strtrim_str_res, "") == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("\nEXP: $orem ipsum dolor sit am$     => SET: tel");
@@ -1048,31 +1250,83 @@ int	main(void)
 
 	free(strtrim_str_res);
 
-	// ////////////////////////////////
-	// //         ft_split           //
-	// ////////////////////////////////
-	// char	ft_split_str[] = { "The-semiotics-spherical-chamber." };
-	// char	**ft_split_res;
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
 
-	// ft_split_res = ft_split(ft_split_str, '-');
+	////////////////////////////////
+	//         ft_split           //
+	////////////////////////////////
+	t = clock();
 
-	// // if (strcmp(ft_split_res[0], "The") == 0)
-	// // 	printf(GRN "FT_SPLIT: [OK]" reset);
-	// // else
-	// // 	printf(RED "FT_SPLIT: [KO]" reset);
+	// char	*ft_split_str = { "The-semiotics-spherical-chamber." };
+	char	*ft_split_str = { "      split       this  for   me  !       " };
+  //char	*ft_split_str = { "      split       this for   me !       " };
+	char	**ft_split_res;
 
-	// //visual debug
-	// // printf("\nEXP: $orem ipsum dolor sit am$     => SET: tel");
+	ft_split_res = ft_split(ft_split_str, ' ');
+
+	if (strcmp(ft_split_res[0], "split") == 0)
+		printf(GRN "FT_SPLIT:   [OK]" reset);
+	else
+		printf(RED "FT_SPLIT:   [KO]" reset);
+
+	if (strcmp(ft_split_res[1], "this") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strcmp(ft_split_res[2], "for") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strcmp(ft_split_res[3], "me") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (strcmp(ft_split_res[4], "!") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (ft_split_res[5] == NULL)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	if (ft_split(NULL, ' ') == NULL)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	// visual debug
 	// printf("\nRES[0]: $%s$", ft_split_res[0]);
 	// printf("\nRES[1]: $%s$", ft_split_res[1]);
 	// printf("\nRES[2]: $%s$", ft_split_res[2]);
-	// printf("\nRES[3]: $%s$\n", ft_split_res[3]);
+	// printf("\nRES[3]: $%s$", ft_split_res[3]);
+	// printf("\nRES[4]: $%s$", ft_split_res[4]);
+	// printf("\nRES[5]: $%s$", ft_split_res[5]);
+	// printf("\nRES[6]: $%p$", ft_split_res[6]);
+	// printf("\nRES[7]: $%p$", ft_split_res[7]);
 
-	// free(ft_split_res);
+	// printf("string 4 %s endereço 4 %p\n", ft_split_res[4] , ft_split_res[4]);
+    // printf("string 5 %s endereço 5 %p\n", ft_split_res[5] , ft_split_res[5]);
+    // printf("string 6 %s endereço 6 %p\n", ft_split_res[6] , ft_split_res[6]);
+    // printf("string 7 %s endereço 7 %p\n", ft_split_res[7] , ft_split_res[7]);
+
+	free(ft_split_res);
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
 
 	////////////////////////////////
 	//         ft_itoa            //
 	////////////////////////////////
+	t = clock();
+
 	if (strcmp(ft_itoa(INT_MIN), "-2147483648") == 0)
 		printf(GRN "FT_ATOI:    [OK]" reset);
 	else
@@ -1114,17 +1368,23 @@ int	main(void)
 		printf(RED " [KO]" reset);
 
 	if (strcmp(ft_itoa(0), "0") == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("\nRES:%s", ft_itoa(2147483647));
 	// printf("\nRES:%s", ft_itoa(-2147483648));
 
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 	////////////////////////////////
 	//         ft_strmapi         //
 	////////////////////////////////
+	t = clock();
+
 	char	*strmapi_res;
 	void	*strmapi_f;
 
@@ -1150,18 +1410,24 @@ int	main(void)
 
 	strmapi_res = ft_strmapi("", strmapi_f);
 	if (strcmp(strmapi_res, "") == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	free(strmapi_res);
 
 	//visual debug
 	// printf("\nRES:%s", strmapi_res);
 
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 	////////////////////////////////
 	//         ft_striteri        //
 	////////////////////////////////
+	t = clock();
+
 	char	striteri_str[] = { "AAAAAAAAAAAA" };
 	void	*striteri_f;
 
@@ -1197,16 +1463,22 @@ int	main(void)
 	strcpy(striteri_str, "0000000000");
 	ft_striteri(striteri_str, striteri_f);
 	if (strcmp(striteri_str, "0123456789") == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("\nRES:%s", striteri_str);
 
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 	////////////////////////////////
 	//         ft_putchar_fd      //
 	////////////////////////////////
+	t = clock();
+
 	char	putchar_c;
 	int		putchar_fd_read;
 	int		putchar_fd_write;
@@ -1258,9 +1530,9 @@ int	main(void)
 	read(putchar_fd_read, &putchar_c, 1);
 
 	if (putchar_c == '\0')
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 	//READ WRITE '\0'
 
 
@@ -1271,9 +1543,15 @@ int	main(void)
 	close(putchar_fd_read);
 	close(putchar_fd_write);
 
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 	////////////////////////////////
 	//         ft_putstr_fd       //
 	////////////////////////////////
+	t = clock();
+
 	char	*putstr_str;
 	char	putstr_str_d[] = { -1, -2, -3, -4, -5, -6, '\0' };
 	int		putstr_fd_read;
@@ -1331,9 +1609,9 @@ int	main(void)
 	read(putstr_fd_read, putstr_str, ft_strlen(putstr_str_d));
 
 	if (strcmp(putstr_str, putstr_str_d) == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 	//READ WRITE "NULL"
 
 	//visual debug
@@ -1344,9 +1622,15 @@ int	main(void)
 	close(putstr_fd_read);
 	close(putstr_fd_write);
 
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 	////////////////////////////////
 	//         ft_putendl_fd      //
 	////////////////////////////////
+	t = clock();
+
 	char	*putendl_str;
 	char	putendl_str_d[] = { -1, -2, -3, -4, -5, -6, '\0' };
 	int		putendl_fd_read;
@@ -1407,9 +1691,9 @@ int	main(void)
 	read(putendl_fd_read, putendl_str, ft_strlen(putendl_str_d));
 
 	if (putendl_str[5] == -6 && putendl_str[6] == '\n')
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 	//READ WRITE "NULL"
 
 	unlink("./file.z");
@@ -1417,9 +1701,15 @@ int	main(void)
 	close(putendl_fd_read);
 	close(putendl_fd_write);
 
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 	////////////////////////////////
 	//         ft_putnbr_fd       //
 	////////////////////////////////
+	t = clock();
+
 	char	*putnbr_str;
 	int		putnbr_fd_read;
 	int		putnbr_fd_write;
@@ -1500,9 +1790,9 @@ int	main(void)
 	read(putnbr_fd_read, putnbr_str, 30);
 
 	if (strcmp(putnbr_str, "10") == 0)
-		printf(GRN " [OK]\n" reset);
+		printf(GRN " [OK]" reset);
 	else
-		printf(RED " [KO]\n" reset);
+		printf(RED " [KO]" reset);
 	unlink("./file_2.z");
 	//READ WRITE "10"
 
@@ -1513,6 +1803,11 @@ int	main(void)
 	free(putendl_str);
 	close(putendl_fd_read);
 	close(putendl_fd_write);
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	return (0);
