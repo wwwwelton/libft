@@ -1809,6 +1809,40 @@ int	main(void)
 	printf(" %0.6fs \n", time_taken);
 
 
+	//Part 3 - Bonus part
+	printf(BHRED "\nPart 2 - Bonus part\n" reset);
+
+	////////////////////////////////
+	//         ft_lstnew          //
+	////////////////////////////////
+	t = clock();
+
+	t_list	*ft_lstnew_list;
+	int		ft_lstnew_n;
+
+	ft_lstnew_n = 15;
+	ft_lstnew_list = ft_lstnew(&ft_lstnew_n);
+
+	if (*((int *)ft_lstnew_list->content) == 15)
+		printf(GRN "FT_LSTNEW:  [OK]" reset);
+	else
+		printf(RED "FT_LSTNEW:  [KO]" reset);
+
+	if (ft_lstnew_list->next == NULL)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	//visual debug
+	// printf("\nCNT: %d", *((int *)ft_lstnew_list->content));
+	// printf("\nNXT: %p", ft_lstnew_list->next);
+
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	return (0);
 }
