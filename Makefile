@@ -8,10 +8,10 @@ SOURCES	+=	ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c
 SOURCES	+=	ft_substr.c ft_tolower.c ft_toupper.c
 
 SOURCES	+=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
-SOURCES	+=	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c
+SOURCES	+=	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
 
 SOURCES_BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
-SOURCES_BONUS	+=	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c
+SOURCES_BONUS	+=	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
 
 OBJECTS	= 	${SOURCES:.c=.o}
 
