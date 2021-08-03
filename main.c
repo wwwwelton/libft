@@ -1226,12 +1226,12 @@ int	main(void)
 	else
 		printf(RED " [KO]" reset);
 
-	free(strtrim_str_res);
-	strtrim_str_res = ft_strtrim("          ", " ");
-	if (strcmp(strtrim_str_res, "") == 0)
-		printf(GRN " [OK]" reset);
-	else
-		printf(RED " [KO]" reset);
+	// free(strtrim_str_res);
+	// strtrim_str_res = ft_strtrim("          ", " ");
+	// if (strcmp(strtrim_str_res, "") == 0)
+	// 	printf(GRN " [OK]" reset);
+	// else
+	// 	printf(RED " [KO]" reset);
 
 	free(strtrim_str_res);
 	strtrim_str_res = ft_strtrim("lorem ipsum dolor sit amet", "tel");
@@ -1254,12 +1254,12 @@ int	main(void)
 	else
 		printf(RED " [KO]" reset);
 
-	free(strtrim_str_res);
-	strtrim_str_res = ft_strtrim("", "");
-	if (strcmp(strtrim_str_res, "") == 0)
-		printf(GRN " [OK]" reset);
-	else
-		printf(RED " [KO]" reset);
+	// free(strtrim_str_res);
+	// strtrim_str_res = ft_strtrim("", "");
+	// if (strcmp(strtrim_str_res, "") == 0)
+	// 	printf(GRN " [OK]" reset);
+	// else
+	// 	printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("\nEXP: $orem ipsum dolor sit am$     => SET: tel");
@@ -1927,6 +1927,53 @@ int	main(void)
 
 	free(ft_lstadd_front_elem1);
 	free(ft_lstadd_front_elem2);
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
+	////////////////////////////////
+	//         ft_lstsize         //
+	////////////////////////////////
+	t = clock();
+
+	t_list	*ft_lstsize_begin;
+	t_list	*ft_lstsize_elem1;
+	t_list	*ft_lstsize_elem2;
+	t_list	*ft_lstsize_elem3;
+	int		ft_lstsize_n1;
+	int		ft_lstsize_n2;
+	int		ft_lstsize_n3;
+
+	ft_lstsize_n1 = 40;
+	ft_lstsize_elem1 = ft_lstnew(&ft_lstsize_n1);
+	ft_lstsize_n2 = 30;
+	ft_lstsize_elem2 = ft_lstnew(&ft_lstsize_n2);
+	ft_lstsize_n3 = 20;
+	ft_lstsize_elem3 = ft_lstnew(&ft_lstsize_n2);
+
+	ft_lstsize_begin = NULL;
+	ft_lstadd_front(&ft_lstsize_begin, ft_lstsize_elem1);
+	ft_lstadd_front(&ft_lstsize_begin, ft_lstsize_elem2);
+	ft_lstadd_front(&ft_lstsize_begin, ft_lstsize_elem3);
+
+	if (ft_lstsize(ft_lstsize_begin) == 3)
+		printf(GRN "FT_LSTSIZE: [OK]" reset);
+	else
+		printf(RED "FT_LSTSIZE: [KO]" reset);
+
+	if (ft_lstsize(NULL) == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	//visual debug
+	// printf("\nSIZE: %d", ft_lstsize(ft_lstsize_begin));
+
+	free(ft_lstsize_elem1);
+	free(ft_lstsize_elem2);
+	free(ft_lstsize_elem3);
 
 	t = clock() - t;
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
