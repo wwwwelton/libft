@@ -27,6 +27,7 @@ void ft_striteri_ft(unsigned int i, char *c)
 void ft_lstdelone_del(void *content)
 {
 	free(content);
+	printf(GRN "[OK] " reset);
 }
 
 int	main(void)
@@ -2104,18 +2105,66 @@ int	main(void)
 	*ft_lstdelone_n1 = 40;
 	ft_lstdelone_elem1 = ft_lstnew(ft_lstdelone_n1);
 
-	ft_lstdelone(ft_lstdelone_elem1, ft_lstdelone_del_free);
-	ft_lstdelone_elem1 = NULL;
+	printf(GRN "FT_LSTDELONE:    " reset);
 
-	if (!ft_lstdelone_elem1)
-		printf(GRN "FT_LSTDELONE:    [OK]" reset);
-	else
-		printf(RED "FT_LSTDELONE:    [KO]" reset);
+	ft_lstdelone(ft_lstdelone_elem1, ft_lstdelone_del_free);
 
 	//visual debug
 	// printf("\nLST: %d", *((int *)ft_lstdelone_begin->next->content));
 	// printf("\nADD: %p", ft_lstdelone_elem1);
 	// printf("\nVAL: %d", *((int *)ft_lstdelone_elem1->content));
+
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
+	////////////////////////////////
+	//        ft_lstclear         //
+	////////////////////////////////
+	t = clock();
+
+	void	*ft_lstclear_del_free;
+	t_list	*ft_lstclear_begin;
+	t_list	*ft_lstclear_elem1;
+	t_list	*ft_lstclear_elem2;
+	t_list	*ft_lstclear_elem3;
+	t_list	*ft_lstclear_elem4;
+	int		*ft_lstclear_n1;
+	int		*ft_lstclear_n2;
+	int		*ft_lstclear_n3;
+	int		*ft_lstclear_n4;
+
+	ft_lstclear_n1 = (int *)malloc(sizeof(int));
+	ft_lstclear_n2 = (int *)malloc(sizeof(int));
+	ft_lstclear_n3 = (int *)malloc(sizeof(int));
+	ft_lstclear_n4 = (int *)malloc(sizeof(int));
+
+	ft_lstclear_del_free = &ft_lstdelone_del;
+
+	*ft_lstclear_n1 = 40;
+	ft_lstclear_elem1 = ft_lstnew(ft_lstclear_n1);
+	*ft_lstclear_n2 = 30;
+	ft_lstclear_elem2 = ft_lstnew(ft_lstclear_n2);
+	*ft_lstclear_n3 = 20;
+	ft_lstclear_elem3 = ft_lstnew(ft_lstclear_n3);
+	*ft_lstclear_n4 = 10;
+	ft_lstclear_elem4 = ft_lstnew(ft_lstclear_n4);
+
+	ft_lstclear_begin = NULL;
+	ft_lstadd_back(&ft_lstclear_begin, ft_lstclear_elem1);
+	ft_lstadd_back(&ft_lstclear_begin, ft_lstclear_elem2);
+	ft_lstadd_back(&ft_lstclear_begin, ft_lstclear_elem3);
+	ft_lstadd_back(&ft_lstclear_begin, ft_lstclear_elem4);
+
+	printf(GRN "FT_LSTCLEAR:     " reset);
+
+	ft_lstclear(&ft_lstclear_begin, ft_lstclear_del_free);
+
+	//visual debug
+	// printf("\nLST: %d", *((int *)ft_lstclear_begin->next->content));
+	// printf("\nLST: %d", *((int *)ft_lstclear_elem1->content));
 
 
 	t = clock() - t;
