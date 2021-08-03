@@ -279,8 +279,9 @@ int	main(void)
 	t = clock();
 
 	char	str_memcpy[11];
+	char	*src_memcpy = "zyxwvutsrqponmlkjihgfedcba";
 
-	if (str_memcpy == ft_memcpy(str_memcpy, "zyxwvutsrqponmlkjihgfedcba", 14))
+	if (str_memcpy == ft_memcpy(str_memcpy, src_memcpy, 10))
 		printf(GRN "FT_MEMCPY:  [OK]" reset);
 	else
 		printf(RED "FT_MEMCPY:  [KO]" reset);
@@ -388,8 +389,8 @@ int	main(void)
 	else
 		printf(RED " [KO]" reset);
 
-	if (strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, -1)
-	== ft_strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, -1))
+	if (strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, 5)
+	== ft_strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, 5))
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
@@ -487,8 +488,8 @@ int	main(void)
 	else
 		printf(RED " [KO]" reset);
 
-	str_strlcat_or_dest[14] = 'a';
-	str_strlcat_ft_dest[14] = 'a';
+	str_strlcat_or_dest[13] = 'a';
+	str_strlcat_ft_dest[13] = 'a';
 	size_strlcat_or = strlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 15);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "lorem ipsum dolor sit amet", 15);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
@@ -1084,40 +1085,45 @@ int	main(void)
 	t = clock();
 
 	char *substr_str = "Apples are round, and apples are juicy.";
-	char *res;
+	char *ft_substr_res;
 
-	res = ft_substr(substr_str, 0, 6);
-	if (strcmp(res, "Apples") == 0)
+	ft_substr_res = ft_substr(substr_str, 0, 6);
+	if (strcmp(ft_substr_res, "Apples") == 0)
 		printf(GRN "FT_SUBSTR:  [OK]" reset);
 	else
 		printf(RED "FT_SUBSTR:  [KO]" reset);
 
-	res = ft_substr("tripouille", 1, 1);
-	if (strcmp(res, "r") == 0)
+	free(ft_substr_res);
+	ft_substr_res = ft_substr("tripouille", 1, 1);
+	if (strcmp(ft_substr_res, "r") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	res = ft_substr("tripouille", 0, 42000);
-	if (strcmp(res, "tripouille") == 0)
+	free(ft_substr_res);
+	ft_substr_res = ft_substr("tripouille", 0, 42000);
+	if (strcmp(ft_substr_res, "tripouille") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	res = ft_substr("tripouille", 100, 1);
-	if (strcmp(res, "") == 0)
+	free(ft_substr_res);
+	ft_substr_res = ft_substr("tripouille", 100, 1);
+	if (strcmp(ft_substr_res, "") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	res = ft_substr("1", 42, 42000000);
-	if (strcmp(res, "") == 0)
+	free(ft_substr_res);
+	ft_substr_res = ft_substr("1", 42, 42000000);
+	if (strcmp(ft_substr_res, "") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	res = ft_substr("42", 0, 0);
-	if (strcmp(res, "") == 0)
+	free(ft_substr_res);
+	ft_substr_res = ft_substr("42", 0, 0);
+	if (strcmp(ft_substr_res, "") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
@@ -1134,7 +1140,7 @@ int	main(void)
 	//visual debug
 	// printf("\nRES:%s$\n", ft_substr("", 0, 100));
 
-	free(res);
+	free(ft_substr_res);
 
 	t = clock() - t;
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
@@ -1165,13 +1171,14 @@ int	main(void)
 	else
 		printf(RED " [KO]" reset);
 
+	free(strjoin_str_res);
 	strjoin_str_res = ft_strjoin("AAAAAAAAAAAAAAAAAAAAAAA", "AAAAAAAAAAAAAAAAAAAAAAA");
 	if (strcmp(strjoin_str_res, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"))
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	if (strjoin_str_res[48] == '\0')
+	if (strjoin_str_res[46] == '\0')
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
@@ -1184,10 +1191,13 @@ int	main(void)
 	// printf("\n47 => 0: $%c$\n", strjoin_str_res[47]);
 	// printf("\nRES: $AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA$");
 	// printf("\nRES: $%s$\n", strjoin_str_res);
+	// printf("\nLEN: %lu\n", strlen(strjoin_str_res));
 
 	t = clock() - t;
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
 	printf(" %0.6fs \n", time_taken);
+
+	free(strjoin_str_res);
 
 	////////////////////////////////
 	//         ft_strtrim          //
@@ -1202,42 +1212,49 @@ int	main(void)
 	else
 		printf(RED "FT_STRTRIM: [KO]" reset);
 
+	free(strtrim_str_res);
 	strtrim_str_res = ft_strtrim("lorem ipsum dolor sit amet", "te");
 	if (strcmp(strtrim_str_res, "lorem ipsum dolor sit am") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
+	free(strtrim_str_res);
 	strtrim_str_res = ft_strtrim(" lorem ipsum dolor sit amet", "l ");
 	if (strcmp(strtrim_str_res, "orem ipsum dolor sit amet") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
+	free(strtrim_str_res);
 	strtrim_str_res = ft_strtrim("          ", " ");
 	if (strcmp(strtrim_str_res, "") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
+	free(strtrim_str_res);
 	strtrim_str_res = ft_strtrim("lorem ipsum dolor sit amet", "tel");
 	if (strcmp(strtrim_str_res, "orem ipsum dolor sit am") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
+	free(strtrim_str_res);
 	strtrim_str_res = ft_strtrim("   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ", " \n\t");
 	if (strcmp(strtrim_str_res, "Hello \t  Please\n Trim me !") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
+	free(strtrim_str_res);
 	strtrim_str_res = ft_strtrim(NULL, NULL);
 	if (strtrim_str_res == NULL)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
+	free(strtrim_str_res);
 	strtrim_str_res = ft_strtrim("", "");
 	if (strcmp(strtrim_str_res, "") == 0)
 		printf(GRN " [OK]" reset);
@@ -1316,6 +1333,11 @@ int	main(void)
     // printf("string 6 %s endereço 6 %p\n", ft_split_res[6] , ft_split_res[6]);
     // printf("string 7 %s endereço 7 %p\n", ft_split_res[7] , ft_split_res[7]);
 
+	free(ft_split_res[0]);
+	free(ft_split_res[1]);
+	free(ft_split_res[2]);
+	free(ft_split_res[3]);
+	free(ft_split_res[4]);
 	free(ft_split_res);
 
 	t = clock() - t;
@@ -1327,47 +1349,66 @@ int	main(void)
 	////////////////////////////////
 	t = clock();
 
-	if (strcmp(ft_itoa(INT_MIN), "-2147483648") == 0)
+	char *ft_itoa_res;
+
+	ft_itoa_res = ft_itoa(INT_MIN);
+	if (strcmp(ft_itoa_res, "-2147483648") == 0)
 		printf(GRN "FT_ATOI:    [OK]" reset);
 	else
 		printf(RED "FT_ATOI:    [KO]" reset);
 
-	if (strcmp(ft_itoa(INT_MAX), "2147483647") == 0)
+	free(ft_itoa_res);
+	ft_itoa_res = ft_itoa(INT_MAX);
+	if (strcmp(ft_itoa_res, "2147483647") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	if (strcmp(ft_itoa(-2147483648LL), "-2147483648") == 0)
+	free(ft_itoa_res);
+	ft_itoa_res = ft_itoa(-2147483648LL);
+	if (strcmp(ft_itoa_res, "-2147483648") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	if (strcmp(ft_itoa(9), "9") == 0)
+	free(ft_itoa_res);
+	ft_itoa_res = ft_itoa(9);
+	if (strcmp(ft_itoa_res, "9") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	if (strcmp(ft_itoa(-9), "-9") == 0)
+	free(ft_itoa_res);
+	ft_itoa_res = ft_itoa(-9);
+	if (strcmp(ft_itoa_res, "-9") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	if (strcmp(ft_itoa(10), "10") == 0)
+	free(ft_itoa_res);
+	ft_itoa_res = ft_itoa(10);
+	if (strcmp(ft_itoa_res, "10") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	if (strcmp(ft_itoa(-10), "-10") == 0)
+	free(ft_itoa_res);
+	ft_itoa_res = ft_itoa(-10);
+	if (strcmp(ft_itoa_res, "-10") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	if (strcmp(ft_itoa(-1), "-1") == 0)
+	free(ft_itoa_res);
+	ft_itoa_res = ft_itoa(-1);
+	if (strcmp(ft_itoa_res, "-1") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
-	if (strcmp(ft_itoa(0), "0") == 0)
+	free(ft_itoa_res);
+	ft_itoa_res = ft_itoa(0);
+	if (strcmp(ft_itoa_res, "0") == 0)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
@@ -1375,6 +1416,8 @@ int	main(void)
 	//visual debug
 	// printf("\nRES:%s", ft_itoa(2147483647));
 	// printf("\nRES:%s", ft_itoa(-2147483648));
+
+	free(ft_itoa_res);
 
 	t = clock() - t;
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
@@ -1396,18 +1439,21 @@ int	main(void)
 	else
 		printf(RED "FT_STRMAPI:    [KO]" reset);
 
+	free(strmapi_res);
 	strmapi_res = ft_strmapi(NULL, strmapi_f);
 	if (strmapi_res == NULL)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
+	free(strmapi_res);
 	strmapi_res = ft_strmapi("AAAAAAAAAAAAAAAAAAAAAAAAAA", NULL);
 	if (strmapi_res == NULL)
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
+	free(strmapi_res);
 	strmapi_res = ft_strmapi("", strmapi_f);
 	if (strcmp(strmapi_res, "") == 0)
 		printf(GRN " [OK]" reset);
@@ -1557,10 +1603,10 @@ int	main(void)
 	int		putstr_fd_read;
 	int		putstr_fd_write;
 
-	putstr_str = (char *)malloc(sizeof(char) * 30);
+	putstr_str = (char *)malloc(sizeof(char) * 80);
 
 	//READ WRITE "They floated in the center"
-	memset(putstr_str, 0, 30);
+	memset(putstr_str, 0, 45);
 	putstr_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
 	ft_putstr_fd("They floated in the center", putstr_fd_write);
 
@@ -1574,7 +1620,7 @@ int	main(void)
 	//READ WRITE "They floated in the center"
 
 	//READ WRITE "He tried to walk past her back into the dark"
-	memset(putstr_str, 0, 30);
+	memset(putstr_str, 0, 45);
 	putstr_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
 	ft_putstr_fd("He tried to walk past her back into the dark", putstr_fd_write);
 
@@ -1636,7 +1682,7 @@ int	main(void)
 	int		putendl_fd_read;
 	int		putendl_fd_write;
 
-	putendl_str = (char *)malloc(sizeof(char) * 30);
+	putendl_str = (char *)malloc(sizeof(char) * 80);
 
 	//READ WRITE "They floated in the center"
 	memset(putendl_str, 0, 30);
@@ -1656,7 +1702,7 @@ int	main(void)
 	// printf("\nFD:%s", putendl_str);
 
 	//READ WRITE "He tried to walk past her back into the dark"
-	memset(putendl_str, 0, 30);
+	memset(putendl_str, 0, 46);
 	putendl_fd_write = open("file.z", O_WRONLY | O_CREAT, 0777);
 	ft_putendl_fd("He tried to walk past her back into the dark", putendl_fd_write);
 
@@ -1800,7 +1846,7 @@ int	main(void)
 	// printf("\nFD: %s", putnbr_str);
 
 
-	free(putendl_str);
+	free(putnbr_str);
 	close(putendl_fd_read);
 	close(putendl_fd_write);
 
@@ -1837,6 +1883,50 @@ int	main(void)
 	// printf("\nCNT: %d", *((int *)ft_lstnew_list->content));
 	// printf("\nNXT: %p", ft_lstnew_list->next);
 
+	free(ft_lstnew_list);
+
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
+	////////////////////////////////
+	//      ft_lstadd_front       //
+	////////////////////////////////
+	t = clock();
+
+	t_list	*ft_lstadd_front_begin;
+	t_list	*ft_lstadd_front_elem1;
+	t_list	*ft_lstadd_front_elem2;
+	int		ft_lstadd_front_n1;
+	int		ft_lstadd_front_n2;
+
+	ft_lstadd_front_n1 = 40;
+	ft_lstadd_front_elem1 = ft_lstnew(&ft_lstadd_front_n1);
+	ft_lstadd_front_n2 = 30;
+	ft_lstadd_front_elem2 = ft_lstnew(&ft_lstadd_front_n2);
+
+	ft_lstadd_front_begin = NULL;
+	ft_lstadd_front(&ft_lstadd_front_begin, ft_lstadd_front_elem1);
+	ft_lstadd_front(&ft_lstadd_front_begin, ft_lstadd_front_elem2);
+
+	if (*((int *)ft_lstadd_front_begin->content) == 30)
+		printf(GRN "FT_LSTADD_FRONT: [OK]" reset);
+	else
+		printf(RED "FT_LSTADD_FRONT: [KO]" reset);
+
+	if (*((int *)ft_lstadd_front_begin->next->content) == 40)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	//visual debug
+	// printf("\nLST: %d", *((int *)ft_lstadd_front_begin->content));
+	// printf("\nLST: %d", *((int *)ft_lstadd_front_begin->next->content));
+
+	free(ft_lstadd_front_elem1);
+	free(ft_lstadd_front_elem2);
 
 	t = clock() - t;
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
