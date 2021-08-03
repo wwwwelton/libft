@@ -1980,6 +1980,56 @@ int	main(void)
 	printf(" %0.6fs \n", time_taken);
 
 
+	////////////////////////////////
+	//         ft_lstlast         //
+	////////////////////////////////
+	t = clock();
+
+	t_list	*ft_lstlast_begin;
+	t_list	*ft_lstlast_res;
+	t_list	*ft_lstlast_elem1;
+	t_list	*ft_lstlast_elem2;
+	t_list	*ft_lstlast_elem3;
+	int		ft_lstlast_n1;
+	int		ft_lstlast_n2;
+	int		ft_lstlast_n3;
+
+	ft_lstlast_n1 = 40;
+	ft_lstlast_elem1 = ft_lstnew(&ft_lstlast_n1);
+	ft_lstlast_n2 = 30;
+	ft_lstlast_elem2 = ft_lstnew(&ft_lstlast_n2);
+	ft_lstlast_n3 = 20;
+	ft_lstlast_elem3 = ft_lstnew(&ft_lstlast_n2);
+
+	ft_lstlast_begin = NULL;
+	ft_lstadd_front(&ft_lstlast_begin, ft_lstlast_elem1);
+	ft_lstadd_front(&ft_lstlast_begin, ft_lstlast_elem2);
+	ft_lstadd_front(&ft_lstlast_begin, ft_lstlast_elem3);
+
+	ft_lstlast_res = ft_lstlast(ft_lstlast_begin);
+
+	if (*((int *)ft_lstlast_res->content) == 40)
+		printf(GRN "FT_LSTLAST: [OK]" reset);
+	else
+		printf(RED "FT_LSTLAST: [KO]" reset);
+
+	if (ft_lstlast(NULL) == NULL)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	//visual debug
+	printf("\nLAST: %d", *((int *)ft_lstlast_res->content));
+
+	free(ft_lstlast_elem1);
+	free(ft_lstlast_elem2);
+	free(ft_lstlast_elem3);
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	return (0);
 }
