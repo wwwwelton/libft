@@ -6,9 +6,10 @@ SOURCES	+=	ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c
 SOURCES	+=	ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c
 SOURCES	+=	ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c
 SOURCES	+=	ft_substr.c ft_tolower.c ft_toupper.c
-SOURCES	+=	ft_lstnew.c
 
-SOURCES_BONUS	=	ft_lstnew.c
+SOURCES	+=	ft_lstnew.c ft_lstadd_front.c
+
+SOURCES_BONUS	=	ft_lstnew.c ft_lstadd_front.c
 
 OBJECTS	= 	${SOURCES:.c=.o}
 
@@ -52,10 +53,13 @@ srm:
 	rm -rf *.o *.a *.z *.out *.so
 
 run:	srm
-	make re bonus && clear && clang -Wall -Wextra -Werror main.c -L. -lft -lbsd && ./a.out && make srm
+	make re bonus && clear && clang -Wall -Wextra -Werror -fsanitize=address -g3 -lbsd main.c libft.a  && ./a.out && make srm
 
 runs:
-	clear && clang -Wall -Wextra -Werror *.c -I includes -lbsd && ./a.out
+	clear && clang -I includes -lbsd -Wall -Wextra -Werror *.c && ./a.out
+
+runf:
+	clear && clang -I includes -lbsd -fsanitize=address -g3 -Wall -Wextra -Werror *.c && ./a.out
 
 runw:
 	bash libft-war-machine/grademe.sh -ob -u
