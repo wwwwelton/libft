@@ -24,6 +24,11 @@ void ft_striteri_ft(unsigned int i, char *c)
 	*c = *c + i;
 }
 
+void ft_lstdelone_del(void *content)
+{
+	free(content);
+}
+
 int	main(void)
 {
 	int	i;
@@ -2078,6 +2083,40 @@ int	main(void)
 
 	free(ft_lstadd_back_elem1);
 	free(ft_lstadd_back_elem2);
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
+	////////////////////////////////
+	//        ft_lstdelone        //
+	////////////////////////////////
+	t = clock();
+
+	void	*ft_lstdelone_del_free;
+	t_list	*ft_lstdelone_elem1;
+	int		*ft_lstdelone_n1;
+
+	ft_lstdelone_del_free = &ft_lstdelone_del;
+	ft_lstdelone_n1 = (int *)malloc(sizeof(int));
+
+	*ft_lstdelone_n1 = 40;
+	ft_lstdelone_elem1 = ft_lstnew(ft_lstdelone_n1);
+
+	ft_lstdelone(ft_lstdelone_elem1, ft_lstdelone_del_free);
+	ft_lstdelone_elem1 = NULL;
+
+	if (!ft_lstdelone_elem1)
+		printf(GRN "FT_LSTDELONE:    [OK]" reset);
+	else
+		printf(RED "FT_LSTDELONE:    [KO]" reset);
+
+	//visual debug
+	// printf("\nLST: %d", *((int *)ft_lstdelone_begin->next->content));
+	// printf("\nADD: %p", ft_lstdelone_elem1);
+	// printf("\nVAL: %d", *((int *)ft_lstdelone_elem1->content));
+
 
 	t = clock() - t;
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
