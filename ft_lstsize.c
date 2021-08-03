@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 00:23:54 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/03 00:35:19 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/03 00:58:34 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_lstsize(t_list *lst)
 {
 	int	i;
 
+	if (!lst)
+		return (0);
 	i = 0;
 	while (lst)
 	{
