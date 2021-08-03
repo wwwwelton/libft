@@ -7,9 +7,9 @@ SOURCES	+=	ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c
 SOURCES	+=	ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c
 SOURCES	+=	ft_substr.c ft_tolower.c ft_toupper.c
 
-SOURCES	+=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c
+SOURCES	+=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 
-SOURCES_BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c
+SOURCES_BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 
 OBJECTS	= 	${SOURCES:.c=.o}
 
