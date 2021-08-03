@@ -14,19 +14,28 @@
 #define YEL "\e[0;33m"
 #define reset "\e[0m"
 
-char ft_strmapi_ft(unsigned int i, char c)
+char	ft_strmapi_ft(unsigned int i, char c)
 {
 	return (c + i);
 }
 
-void ft_striteri_ft(unsigned int i, char *c)
+void	ft_striteri_ft(unsigned int i, char *c)
 {
 	*c = *c + i;
 }
 
-void ft_lstdelone_del(void *content)
+void	ft_lstdelone_del(void *content)
 {
 	free(content);
+	printf(GRN "[OK] " reset);
+}
+
+void	ft_lstiter_func_iter(void *content)
+{
+	char *s = content;
+
+	s[0] = 'O';
+	s[1] = 'K';
 	printf(GRN "[OK] " reset);
 }
 
@@ -2162,10 +2171,56 @@ int	main(void)
 
 	ft_lstclear(&ft_lstclear_begin, ft_lstclear_del_free);
 
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
 	//visual debug
 	// printf("\nLST: %d", *((int *)ft_lstclear_begin->next->content));
 	// printf("\nLST: %d", *((int *)ft_lstclear_elem1->content));
 
+
+	////////////////////////////////
+	//        ft_lstiter          //
+	////////////////////////////////
+	t = clock();
+
+	void	*ft_lstiter_func;
+	char	ft_lstiter_str1[] = { "Oi" };
+	char	ft_lstiter_str2[] = { "Oi" };
+	char	ft_lstiter_str3[] = { "Oi" };
+	char	ft_lstiter_str4[] = { "Oi" };
+	t_list	*ft_lstiter_begin;
+	t_list	*ft_lstiter_elem1;
+	t_list	*ft_lstiter_elem2;
+	t_list	*ft_lstiter_elem3;
+	t_list	*ft_lstiter_elem4;
+
+	ft_lstiter_func = &ft_lstiter_func_iter;
+
+	ft_lstiter_begin = NULL;
+	ft_lstiter_elem1 = ft_lstnew(ft_lstiter_str1);
+	ft_lstiter_elem2 = ft_lstnew(ft_lstiter_str2);
+	ft_lstiter_elem3 = ft_lstnew(ft_lstiter_str3);
+	ft_lstiter_elem4 = ft_lstnew(ft_lstiter_str4);
+
+	ft_lstadd_front(&ft_lstiter_begin, ft_lstiter_elem1);
+	ft_lstadd_front(&ft_lstiter_begin, ft_lstiter_elem2);
+	ft_lstadd_front(&ft_lstiter_begin, ft_lstiter_elem3);
+	ft_lstadd_front(&ft_lstiter_begin, ft_lstiter_elem4);
+
+	printf(GRN "FT_LSTITER:      " reset);
+
+	ft_lstiter(ft_lstiter_begin, ft_lstiter_func);
+
+	//visual debug
+	// printf("\nLST: %d", *((int *)ft_lstiter_begin->next->content));
+	// printf("\nLST: %d", *((int *)ft_lstiter_elem1->content));
+
+	free(ft_lstiter_elem1);
+	free(ft_lstiter_elem2);
+	free(ft_lstiter_elem3);
+	free(ft_lstiter_elem4);
 
 	t = clock() - t;
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
