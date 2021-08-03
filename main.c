@@ -1885,9 +1885,9 @@ int	main(void)
 	ft_lstnew_list = ft_lstnew(&ft_lstnew_n);
 
 	if (*((int *)ft_lstnew_list->content) == 15)
-		printf(GRN "FT_LSTNEW:  [OK]" reset);
+		printf(GRN "FT_LSTNEW:       [OK]" reset);
 	else
-		printf(RED "FT_LSTNEW:  [KO]" reset);
+		printf(RED "FT_LSTNEW:       [KO]" reset);
 
 	if (ft_lstnew_list->next == NULL)
 		printf(GRN " [OK]" reset);
@@ -1974,9 +1974,9 @@ int	main(void)
 	ft_lstadd_front(&ft_lstsize_begin, ft_lstsize_elem3);
 
 	if (ft_lstsize(ft_lstsize_begin) == 3)
-		printf(GRN "FT_LSTSIZE: [OK]" reset);
+		printf(GRN "FT_LSTSIZE:      [OK]" reset);
 	else
-		printf(RED "FT_LSTSIZE: [KO]" reset);
+		printf(RED "FT_LSTSIZE:      [KO]" reset);
 
 	if (ft_lstsize(NULL) == 0)
 		printf(GRN " [OK]" reset);
@@ -2024,9 +2024,9 @@ int	main(void)
 	ft_lstlast_res = ft_lstlast(ft_lstlast_begin);
 
 	if (*((int *)ft_lstlast_res->content) == 40)
-		printf(GRN "FT_LSTLAST: [OK]" reset);
+		printf(GRN "FT_LSTLAST:      [OK]" reset);
 	else
-		printf(RED "FT_LSTLAST: [KO]" reset);
+		printf(RED "FT_LSTLAST:      [KO]" reset);
 
 	if (ft_lstlast(NULL) == NULL)
 		printf(GRN " [OK]" reset);
@@ -2221,6 +2221,61 @@ int	main(void)
 	free(ft_lstiter_elem2);
 	free(ft_lstiter_elem3);
 	free(ft_lstiter_elem4);
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
+	////////////////////////////////
+	//        ft_lstmap           //
+	////////////////////////////////
+	t = clock();
+
+	void	*ft_lstmap_func_itera;
+	void	*ft_lstmap_func_del;
+	char	ft_lstmap_str1[] = { "Oi" };
+	char	ft_lstmap_str2[] = { "Oi" };
+	char	ft_lstmap_str3[] = { "Oi" };
+	char	ft_lstmap_str4[] = { "Oi" };
+	t_list	*ft_lstmap_begin;
+	t_list	*ft_lstmap_new;
+	t_list	*ft_lstmap_elem1;
+	t_list	*ft_lstmap_elem2;
+	t_list	*ft_lstmap_elem3;
+	t_list	*ft_lstmap_elem4;
+
+	ft_lstmap_func_itera = &ft_lstiter_func_iter;
+	ft_lstmap_func_del = &ft_lstdelone_del;
+
+	ft_lstmap_begin = NULL;
+	ft_lstmap_elem1 = ft_lstnew(ft_lstmap_str1);
+	ft_lstmap_elem2 = ft_lstnew(ft_lstmap_str2);
+	ft_lstmap_elem3 = ft_lstnew(ft_lstmap_str3);
+	ft_lstmap_elem4 = ft_lstnew(ft_lstmap_str4);
+
+	ft_lstadd_front(&ft_lstmap_begin, ft_lstmap_elem1);
+	ft_lstadd_front(&ft_lstmap_begin, ft_lstmap_elem2);
+	ft_lstadd_front(&ft_lstmap_begin, ft_lstmap_elem3);
+	ft_lstadd_front(&ft_lstmap_begin, ft_lstmap_elem4);
+
+	printf(GRN "FT_LSTMAP:       " reset);
+
+	ft_lstmap_new = ft_lstmap(ft_lstmap_begin, ft_lstmap_func_itera, ft_lstmap_func_del);
+
+	//visual debug
+	// printf("\nLST: %d", *((int *)ft_lstmap_begin->next->content));
+	// printf("\nLST: %d", *((int *)ft_lstmap_elem1->content));
+
+	free(ft_lstmap_elem1);
+	free(ft_lstmap_elem2);
+	free(ft_lstmap_elem3);
+	free(ft_lstmap_elem4);
+	free(ft_lstmap_new->next->next->next->next);
+	free(ft_lstmap_new->next->next->next);
+	free(ft_lstmap_new->next->next);
+	free(ft_lstmap_new->next);
+	free(ft_lstmap_new);
 
 	t = clock() - t;
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
