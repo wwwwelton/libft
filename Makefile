@@ -7,9 +7,9 @@ SOURCES	+=	ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c
 SOURCES	+=	ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c
 SOURCES	+=	ft_substr.c ft_tolower.c ft_toupper.c
 
-SOURCES	+=	ft_lstnew.c ft_lstadd_front.c
+SOURCES	+=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c
 
-SOURCES_BONUS	=	ft_lstnew.c ft_lstadd_front.c
+SOURCES_BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c
 
 OBJECTS	= 	${SOURCES:.c=.o}
 
@@ -29,9 +29,9 @@ ARFLAGS = rcs
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INCLUDE}
 
-all:	${NAME}
+all:	$(NAME)
 
-${NAME}:	${OBJECTS}
+$(NAME):	${OBJECTS}
 			${AR} ${ARFLAGS} ${NAME} ${OBJECTS}
 
 bonus:	${NAME} ${OBJECTS_BONUS}
