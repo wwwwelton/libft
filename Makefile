@@ -9,9 +9,11 @@ SOURCES	+=	ft_substr.c ft_tolower.c ft_toupper.c
 
 SOURCES	+=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 SOURCES	+=	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
+SOURCES	+=	ft_lstmap.c
 
 SOURCES_BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 SOURCES_BONUS	+=	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
+SOURCES_BONUS	+=	ft_lstmap.c
 
 OBJECTS	= 	${SOURCES:.c=.o}
 
@@ -64,9 +66,9 @@ runf:
 	clear && clang -I includes -lbsd -fsanitize=address -g3 -Wall -Wextra -Werror *.c && ./a.out
 
 runw:
-	bash libft-war-machine/grademe.sh -ob -u
+	bash libft-war-machine/grademe.sh -u
 
 runww:
-	bash Libftest/grademe.sh -ob -u
+	bash Libftest/grademe.sh -u
 
 .PHONY:	all clean fclean re
