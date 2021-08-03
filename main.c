@@ -2019,11 +2019,65 @@ int	main(void)
 		printf(RED " [KO]" reset);
 
 	//visual debug
-	printf("\nLAST: %d", *((int *)ft_lstlast_res->content));
+	// printf("\nLAST: %d", *((int *)ft_lstlast_res->content));
 
 	free(ft_lstlast_elem1);
 	free(ft_lstlast_elem2);
 	free(ft_lstlast_elem3);
+
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf(" %0.6fs \n", time_taken);
+
+
+	////////////////////////////////
+	//       ft_lstadd_back       //
+	////////////////////////////////
+	t = clock();
+
+	t_list	*ft_lstadd_back_begin;
+	t_list	*ft_lstadd_back_elem1;
+	t_list	*ft_lstadd_back_elem2;
+	int		ft_lstadd_back_n1;
+	int		ft_lstadd_back_n2;
+
+	ft_lstadd_back_n1 = 40;
+	ft_lstadd_back_elem1 = ft_lstnew(&ft_lstadd_back_n1);
+	ft_lstadd_back_n2 = 30;
+	ft_lstadd_back_elem2 = ft_lstnew(&ft_lstadd_back_n2);
+
+	ft_lstadd_back_begin = NULL;
+	ft_lstadd_back(&ft_lstadd_back_begin, ft_lstadd_back_elem1);
+	ft_lstadd_back(&ft_lstadd_back_begin, ft_lstadd_back_elem2);
+
+	if (*((int *)ft_lstadd_back_begin->content) == 40)
+		printf(GRN "FT_LSTADD_BACK:  [OK]" reset);
+	else
+		printf(RED "FT_LSTADD_BACK:  [KO]" reset);
+
+	if (*((int *)ft_lstadd_back_begin->next->content) == 30)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	ft_lstadd_back(&ft_lstadd_back_begin, NULL);
+	if (*((int *)ft_lstadd_back_begin->content) == 40)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	ft_lstadd_back(NULL, NULL);
+	if (*((int *)ft_lstadd_back_begin->content) == 40)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
+
+	//visual debug
+	// printf("\nLST: %d", *((int *)ft_lstadd_back_begin->next->content));
+	// printf("\nLST: %d", *((int *)ft_lstadd_back_begin->content));
+
+	free(ft_lstadd_back_elem1);
+	free(ft_lstadd_back_elem2);
 
 	t = clock() - t;
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
