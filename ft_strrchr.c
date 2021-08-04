@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:24:59 by wleite            #+#    #+#             */
-/*   Updated: 2021/07/27 19:25:00 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/04 05:31:07 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,19 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*str;
+	char	ch;
 	size_t	n;
 
 	n = ft_strlen(s);
 	str = (char *)s + n;
+	ch = (char)c;
 	while (n--)
 	{
-		if (*str == (char)c)
+		if (*str == ch)
 			return (str);
 		str--;
 	}
-	if (*str == (char)c)
+	if (*str == ch)
 		return (str);
 	return (NULL);
 }
