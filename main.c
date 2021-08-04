@@ -1271,12 +1271,12 @@ int	main(void)
 	else
 		printf(RED " [KO]" reset);
 
-	// free(strtrim_str_res);
-	// strtrim_str_res = ft_strtrim("", "");
-	// if (strcmp(strtrim_str_res, "") == 0)
-	// 	printf(GRN " [OK]" reset);
-	// else
-	// 	printf(RED " [KO]" reset);
+	free(strtrim_str_res);
+	strtrim_str_res = ft_strtrim("", "");
+	if (strcmp(strtrim_str_res, "") == 0)
+		printf(GRN " [OK]" reset);
+	else
+		printf(RED " [KO]" reset);
 
 	//visual debug
 	// printf("\nEXP: $orem ipsum dolor sit am$     => SET: tel");
