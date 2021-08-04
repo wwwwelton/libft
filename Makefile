@@ -60,7 +60,7 @@ run:	srm
 	make re bonus && clear && clang -Wall -Wextra -Werror -fsanitize=address -g3 -lbsd main.c libft.a  && ./a.out && make srm
 
 runs:
-	clear && clang -I includes -lbsd -Wall -Wextra -Werror *.c && ./a.out
+	norminette ft_* && norminette libft.h && clear && clang -Wall -Wextra -Werror *.c -lbsd && ./a.out
 
 runf:
 	clear && clang -I includes -lbsd -fsanitize=address -g3 -Wall -Wextra -Werror *.c && ./a.out
