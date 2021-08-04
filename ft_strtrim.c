@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 23:19:39 by wleite            #+#    #+#             */
-/*   Updated: 2021/07/28 01:07:28 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/04 06:10:23 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1 || !set)
 		return (NULL);
+	if (!*s1)
+		return (ft_strdup(""));
 	src = (char *)s1;
 	start = 0;
 	while (src[start] && ft_strchr(set, src[start]))
