@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:24:14 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/04 02:29:09 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/04 03:47:02 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 void	*ft_memchr(const void *b, int c, size_t len)
 {
 	unsigned char	*ptr;
+	unsigned char	ch;
 
 	ptr = (unsigned char *)b;
+	ch = (unsigned char)c;
 	while (len--)
 	{
-		if (*ptr == (unsigned char)c)
+		if (*ptr == ch)
 			return ((void *)ptr);
 		ptr++;
 	}
