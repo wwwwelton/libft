@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 03:55:30 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/04 03:42:21 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/04 05:38:39 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	new_lst = NULL;
 	while (lst)
 	{
-		new_element = ft_lstnew(lst->content);
-		if (new_element->content)
-			f(new_element->content);
+		new_element = ft_lstnew(f(lst->content));
 		if (!new_element)
 		{
 			ft_lstclear(&new_element, del);
