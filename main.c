@@ -365,7 +365,9 @@ int	main(void)
 		printf(RED " [KO]" reset);
 
 	//visual debug
-	// printf("OR:%s\n\nFT:%s\n", str_memmove_or, str_memmove_ft);
+	// printf("\nOR:%s\n\nFT:%s\n", str_memmove_or, str_memmove_ft);
+
+
 	t = clock() - t;
 	time_taken = ((double)t)/CLOCKS_PER_SEC;
 	printf(" %0.6fs \n", time_taken);
