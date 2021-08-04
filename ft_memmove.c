@@ -6,33 +6,32 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:24:28 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/04 02:40:57 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/04 04:48:46 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+static void	*memrcpy(void *dst, const void *src, size_t len)
 {
 	unsigned char	*ptr_dest;
 	unsigned char	*ptr_src;
-	size_t			i;
 
-	ptr_dest = (unsigned char *)dst;
-	ptr_src = (unsigned char *)src;
 	if ((!dst && !src) || !len)
 		return (dst);
-	if ((char *)dst < (char *)src)
-	{
-		i = -1;
-		while (++i < len)
-			ptr_dest[i] = ptr_src[i];
-	}
-	else
-	{
-		i = len;
-		while (i--)
-			ptr_dest[i] = ptr_src[i];
-	}
+	ptr_dest = (unsigned char *)dst + len - 1;
+	ptr_src = (unsigned char *)src + len - 1;
+	while (len--)
+		*ptr_dest-- = *ptr_src--;
 	return (dst);
+}
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	if ((!dst && !src) || !len)
+		return (dst);
+	if (dst <= src)
+		return (ft_memcpy(dst, src, len));
+	else
+		return (memrcpy(dst, src, len));
 }
