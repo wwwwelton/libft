@@ -27,7 +27,7 @@ CC	=	clang
 AR	=	ar
 RM	=	rm -f
 
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g3
 ARFLAGS = rcs
 
 .c.o:
