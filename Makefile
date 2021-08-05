@@ -12,9 +12,9 @@ SOURCES_BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 SOURCES_BONUS	+=	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
 SOURCES_BONUS	+=	ft_lstmap.c
 
-OBJECTS			= 	${SOURCES:.c=.o}
+OBJECTS			= 	$(SOURCES:.c=.o)
 
-OBJECTS_BONUS	= 	${SOURCES_BONUS:.c=.o}
+OBJECTS_BONUS	= 	$(SOURCES_BONUS:.c=.o)
 
 NAME			=	libft.a
 
@@ -26,24 +26,22 @@ CFLAGS			=	-Wall -Wextra -Werror
 ARFLAGS 		=	rcs
 
 .c.o:
-				${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+				$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-all:			${NAME}
+all:			$(NAME)
 
-$(NAME):		${OBJECTS}
-				${AR} ${ARFLAGS} ${NAME} ${OBJECTS}
+$(NAME):		$(OBJECTS)
+				$(AR) $(ARFLAGS) $(NAME) $(OBJECTS)
 
-bonus:			${NAME} ${OBJECTS_BONUS}
-				${AR} ${ARFLAGS} ${NAME} ${OBJECTS_BONUS}
+bonus:			$(NAME) $(OBJECTS_BONUS)
+				$(AR) $(ARFLAGS) $(NAME) $(OBJECTS_BONUS)
 
 clean:
-				${RM} ${OBJECTS} ${OBJECTS_BONUS}
+				$(RM) $(OBJECTS) $(OBJECTS_BONUS)
 
 fclean:			clean
-				${RM} ${NAME}
+				$(RM) $(NAME)
 
 re:				fclean all
 
-rebonus:		fclean bonus
-
-.PHONY:			all clean fclean re bonus rebonus
+.PHONY:			all clean fclean re bonus
