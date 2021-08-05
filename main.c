@@ -14,6 +14,9 @@
 #define YEL "\e[0;33m"
 #define reset "\e[0m"
 
+# define INT_MIN -2147483648
+# define INT_MAX 2147483647
+
 char	*Xstrnstr(const char *s, const char *find, size_t slen);
 size_t	Xstrlcpy(char *dst, const char *src, size_t dsize);
 size_t	Xstrlcat(char *dst, const char *src, size_t dsize);
