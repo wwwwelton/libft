@@ -14,9 +14,9 @@
 #define YEL "\e[0;33m"
 #define reset "\e[0m"
 
-char	*strnstr(const char *s, const char *find, size_t slen);
-size_t	strlcpy(char *dst, const char *src, size_t dsize);
-size_t	strlcat(char *dst, const char *src, size_t dsize);
+char	*Xstrnstr(const char *s, const char *find, size_t slen);
+size_t	Xstrlcpy(char *dst, const char *src, size_t dsize);
+size_t	Xstrlcat(char *dst, const char *src, size_t dsize);
 
 char	ft_strmapi_ft(unsigned int i, char c)
 {
@@ -388,7 +388,7 @@ int	main(void)
 	size_t	size_strlcpy_or;
 	size_t	size_strlcpy_ft;
 
-	size_strlcpy_or = strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, 9);
+	size_strlcpy_or = Xstrlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, 9);
 	size_strlcpy_ft = ft_strlcpy(str_strlcpy_ft_dest, str_strlcpy_ft_src, 9);
 
 	//visual debug
@@ -400,7 +400,7 @@ int	main(void)
 	else
 		printf(RED "FT_STRLCPY: [KO]" reset);
 
-	if (strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, 0) == ft_strlcpy(str_strlcpy_ft_dest, str_strlcpy_ft_src, 0))
+	if (Xstrlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, 0) == ft_strlcpy(str_strlcpy_ft_dest, str_strlcpy_ft_src, 0))
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
@@ -410,14 +410,14 @@ int	main(void)
 	else
 		printf(RED " [KO]" reset);
 
-	if (strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, 5)
+	if (Xstrlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, 5)
 	== ft_strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, 5))
 		printf(GRN " [OK]" reset);
 	else
 		printf(RED " [KO]" reset);
 
 	//visual debug
-	// printf("%zu\n", strlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, -1));
+	// printf("%zu\n", Xstrlcpy(str_strlcpy_or_dest, str_strlcpy_or_src, -1));
 	// printf("%zu\n", ft_strlcpy(str_strlcpy_ft_dest, str_strlcpy_ft_src, -1));
 
 	t = clock() - t;
@@ -439,7 +439,7 @@ int	main(void)
 
 	memset(str_strlcat_or_dest, 0, 15);
 	memset(str_strlcat_ft_dest, 0, 15);
-	size_strlcat_or = strlcat(str_strlcat_or_dest, "lorem", 15);
+	size_strlcat_or = Xstrlcat(str_strlcat_or_dest, "lorem", 15);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "lorem", 15);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
 		printf(GRN "FT_STRLCAT: [OK]" reset);
@@ -448,7 +448,7 @@ int	main(void)
 
 	memset(str_strlcat_or_dest, 0, 15);
 	memset(str_strlcat_ft_dest, 0, 15);
-	size_strlcat_or = strlcat(str_strlcat_or_dest, "", 15);
+	size_strlcat_or = Xstrlcat(str_strlcat_or_dest, "", 15);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "", 15);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
 		printf(GRN " [OK]" reset);
@@ -457,7 +457,7 @@ int	main(void)
 
 	memset(str_strlcat_or_dest, 0, 15);
 	memset(str_strlcat_ft_dest, 0, 15);
-	size_strlcat_or = strlcat(str_strlcat_or_dest, "lorem ipsum", 15);
+	size_strlcat_or = Xstrlcat(str_strlcat_or_dest, "lorem ipsum", 15);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "lorem ipsum", 15);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
 		printf(GRN " [OK]" reset);
@@ -466,7 +466,7 @@ int	main(void)
 
 	memset(str_strlcat_or_dest, 0, 15);
 	memset(str_strlcat_ft_dest, 0, 15);
-	size_strlcat_or = strlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 15);
+	size_strlcat_or = Xstrlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 15);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "lorem ipsum dolor sit amet", 15);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
 		printf(GRN " [OK]" reset);
@@ -475,7 +475,7 @@ int	main(void)
 
 	memset(str_strlcat_or_dest, 0, 15);
 	memset(str_strlcat_ft_dest, 0, 15);
-	size_strlcat_or = strlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 0);
+	size_strlcat_or = Xstrlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 0);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "lorem ipsum dolor sit amet", 0);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
 		printf(GRN " [OK]" reset);
@@ -484,7 +484,7 @@ int	main(void)
 
 	memset(str_strlcat_or_dest, 0, 15);
 	memset(str_strlcat_ft_dest, 0, 15);
-	size_strlcat_or = strlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 1);
+	size_strlcat_or = Xstrlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 1);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "lorem ipsum dolor sit amet", 1);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
 		printf(GRN " [OK]" reset);
@@ -493,7 +493,7 @@ int	main(void)
 
 	memset(str_strlcat_or_dest, 0, 15);
 	memset(str_strlcat_ft_dest, 0, 15);
-	size_strlcat_or = strlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 5);
+	size_strlcat_or = Xstrlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 5);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "lorem ipsum dolor sit amet", 5);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
 		printf(GRN " [OK]" reset);
@@ -502,7 +502,7 @@ int	main(void)
 
 	memset(str_strlcat_or_dest, 'r', 14);
 	memset(str_strlcat_ft_dest, 'r', 14);
-	size_strlcat_or = strlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 15);
+	size_strlcat_or = Xstrlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 15);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "lorem ipsum dolor sit amet", 15);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
 		printf(GRN " [OK]" reset);
@@ -511,7 +511,7 @@ int	main(void)
 
 	str_strlcat_or_dest[13] = 'a';
 	str_strlcat_ft_dest[13] = 'a';
-	size_strlcat_or = strlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 15);
+	size_strlcat_or = Xstrlcat(str_strlcat_or_dest, "lorem ipsum dolor sit amet", 15);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "lorem ipsum dolor sit amet", 15);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
 		printf(GRN " [OK]" reset);
@@ -524,7 +524,7 @@ int	main(void)
 
 	strcpy(str_strlcat_or_dest, "Teste");
 	strcpy(str_strlcat_ft_dest, "Teste");
-	size_strlcat_or = strlcat(str_strlcat_or_dest, "Nome", 5);
+	size_strlcat_or = Xstrlcat(str_strlcat_or_dest, "Nome", 5);
 	size_strlcat_ft = ft_strlcat(str_strlcat_ft_dest, "Nome", 5);
 	if (strcmp(str_strlcat_or_dest, str_strlcat_ft_dest) == 0)
 		printf(GRN " [OK]" reset);
@@ -885,7 +885,7 @@ int	main(void)
 	char	*strnstr_or_r;
 	char	*strnstr_ft_r;
 
-	strnstr_or_r = strnstr(strnstr_or_big, strnstr_or_little, 4);
+	strnstr_or_r = Xstrnstr(strnstr_or_big, strnstr_or_little, 4);
 	strnstr_ft_r = ft_strnstr(strnstr_ft_big, strnstr_ft_little, 4);
 
 	if (strcmp(strnstr_ft_big, "paae3fRs6frctbs5thQp") == 0)
@@ -903,7 +903,7 @@ int	main(void)
 	else
 		printf(RED " [KO]" reset);
 
-	strnstr_or_r = strnstr(strnstr_or_big, "thQp", 20);
+	strnstr_or_r = Xstrnstr(strnstr_or_big, "thQp", 20);
 	strnstr_ft_r = ft_strnstr(strnstr_ft_big, "thQp", 20);
 
 	if (strcmp(strnstr_or_r, strnstr_ft_r) == 0)
@@ -915,7 +915,7 @@ int	main(void)
 	// printf("\nOR:%s ", strnstr_or_r);
 	// printf("FT:%s\n", strnstr_ft_r);
 
-	strnstr_or_r = strnstr(strnstr_or_big, strnstr_or_little, 0);
+	strnstr_or_r = Xstrnstr(strnstr_or_big, strnstr_or_little, 0);
 	strnstr_ft_r = ft_strnstr(strnstr_ft_big, strnstr_ft_little, 0);
 
 	if (strnstr_or_r == NULL && strnstr_ft_r == NULL)
@@ -923,7 +923,7 @@ int	main(void)
 	else
 		printf(RED " [KO]" reset);
 
-	strnstr_or_r = strnstr("lorem ipsum dolor sit amet", "dolor", 15);
+	strnstr_or_r = Xstrnstr("lorem ipsum dolor sit amet", "dolor", 15);
 	strnstr_ft_r = ft_strnstr("lorem ipsum dolor sit amet", "dolor", 15);
 
 	if (strnstr_or_r == NULL && strnstr_ft_r == NULL)
@@ -2293,7 +2293,7 @@ int	main(void)
 }
 
 // #include <bsd/string.h>
-char	*strnstr(const char *s, const char *find, size_t slen)
+char	*Xstrnstr(const char *s, const char *find, size_t slen)
 {
 	char c, sc;
 	size_t len;
@@ -2313,7 +2313,7 @@ char	*strnstr(const char *s, const char *find, size_t slen)
 	return ((char *)s);
 }
 
-size_t	strlcpy(char * __restrict dst, const char * __restrict src, size_t dsize)
+size_t	Xstrlcpy(char * __restrict dst, const char * __restrict src, size_t dsize)
 {
 	const char *osrc = src;
 	size_t nleft = dsize;
@@ -2337,7 +2337,7 @@ size_t	strlcpy(char * __restrict dst, const char * __restrict src, size_t dsize)
 	return(src - osrc - 1);	/* count does not include NUL */
 }
 
-size_t	strlcat(char * __restrict dst, const char * __restrict src, size_t dsize)
+size_t	Xstrlcat(char * __restrict dst, const char * __restrict src, size_t dsize)
 {
 	const char *odst = dst;
 	const char *osrc = src;
