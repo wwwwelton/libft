@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-#include <bsd/string.h>
+// #include <bsd/string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <time.h>
@@ -13,6 +13,10 @@
 #define GRN "\e[0;32m"
 #define YEL "\e[0;33m"
 #define reset "\e[0m"
+
+char	*strnstr(const char *s, const char *find, size_t slen);
+size_t	strlcpy(char *dst, const char *src, size_t dsize);
+size_t	strlcat(char *dst, const char *src, size_t dsize);
 
 char	ft_strmapi_ft(unsigned int i, char c)
 {
@@ -2287,3 +2291,76 @@ int	main(void)
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	return (0);
 }
+
+// #include <bsd/string.h>
+char	*strnstr(const char *s, const char *find, size_t slen)
+{
+	char c, sc;
+	size_t len;
+
+	if ((c = *find++) != '\0') {
+		len = strlen(find);
+		do {
+			do {
+				if (slen-- < 1 || (sc = *s++) == '\0')
+					return (NULL);
+			} while (sc != c);
+			if (len > slen)
+				return (NULL);
+		} while (strncmp(s, find, len) != 0);
+		s--;
+	}
+	return ((char *)s);
+}
+
+size_t	strlcpy(char * __restrict dst, const char * __restrict src, size_t dsize)
+{
+	const char *osrc = src;
+	size_t nleft = dsize;
+
+	/* Copy as many bytes as will fit. */
+	if (nleft != 0) {
+		while (--nleft != 0) {
+			if ((*dst++ = *src++) == '\0')
+				break;
+		}
+	}
+
+	/* Not enough room in dst, add NUL and traverse rest of src. */
+	if (nleft == 0) {
+		if (dsize != 0)
+			*dst = '\0';		/* NUL-terminate dst */
+		while (*src++)
+			;
+	}
+
+	return(src - osrc - 1);	/* count does not include NUL */
+}
+
+size_t	strlcat(char * __restrict dst, const char * __restrict src, size_t dsize)
+{
+	const char *odst = dst;
+	const char *osrc = src;
+	size_t n = dsize;
+	size_t dlen;
+
+	/* Find the end of dst and adjust bytes left but don't go past end. */
+	while (n-- != 0 && *dst != '\0')
+		dst++;
+	dlen = dst - odst;
+	n = dsize - dlen;
+
+	if (n-- == 0)
+		return(dlen + strlen(src));
+	while (*src != '\0') {
+		if (n != 0) {
+			*dst++ = *src;
+			n--;
+		}
+		src++;
+	}
+	*dst = '\0';
+
+	return(dlen + (src - osrc));	/* count does not include NUL */
+}
+// #include <bsd/string.h>
