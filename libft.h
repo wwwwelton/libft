@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/04 03:29:36 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/06 22:35:59 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 /**
  * @brief Computes the length of the string s up to, but not including the
- * terminating null character.
+ * terminating null character. Example: ft_strlen("1234") => 4
  *
  * @param s This is the string whose length is to be found.
  * @return This function returns the length of string.
