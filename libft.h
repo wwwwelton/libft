@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/06 22:35:59 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/07 02:05:21 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -422,7 +422,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 int		ft_lstsize(t_list *lst);
 
 /**
- * @brief Last element of the list.
+ * @brief Returns the last element of the list.
  *
  * @param lst The beginning of the list.
  * @return Returns the last element of the list.
