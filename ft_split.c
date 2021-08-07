@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 19:09:55 by wleite            #+#    #+#             */
-/*   Updated: 2021/07/31 03:02:50 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/07 13:16:12 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,12 @@ static void	pfree(char **ptr, size_t size)
 
 	i = -1;
 	while (++i < size)
+	{
 		free(ptr[i]);
+		ptr[i] = NULL;
+	}
 	free(ptr);
+	ptr = NULL;
 }
 
 static void	copyelem(char **save_ptr, char *str, size_t size, char delim)
