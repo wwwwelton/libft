@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 01:34:18 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/03 02:18:04 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/07 20:15:12 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*))
 		return ;
 	del(lst->content);
 	free(lst);
+	lst = NULL;
 }
