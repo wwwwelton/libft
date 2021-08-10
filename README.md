@@ -16,7 +16,8 @@ Libft is an individual project at [42](42sp.org.br) that requires us to re-creat
 - Rigor
 
 #### My grade
-<img src="score.png" width="150" height="150"/>
+<img src="score.jpg" width="150" height="150"/>
+
 
 ## Getting started
 **Follow the steps below**
