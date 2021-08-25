@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/25 17:02:17 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/25 17:18:48 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -508,5 +508,18 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
  * If a null pointer is passed as argument, no action occurs.
  */
 void	ft_free_ptr(void **ptr);
+
+/**
+ * @brief Searches for the first occurrence of the string
+ * old_word in the string str and replaces with the string new_word.
+ *
+ * @param str This is the C string to be scanned.
+ * @param old_word This is the string to be located inside str.
+ * @param new_word This is the string to be replaced inside str.
+ * @return Returns a new string with old_word replaced by new_word
+ * or a duplicate of the string pointed to by str in case old_word
+ * not found. If an error occurs, a null pointer is returned.
+ */
+char	*ft_str_replace(const char *str, char *old_word, char *new_word);
 
 #endif
