@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/07 02:05:21 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/25 17:02:17 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -498,5 +498,15 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
  * @param f  The adress of the function used to iterate on the list.
  */
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+
+/**
+ * @brief Deallocates the pointer memory address previously allocated
+ * by a call to calloc, malloc, or realloc.
+ *
+ * @param ptr This is the pointer address to a memory block previously
+ * allocated with malloc, calloc or realloc to be deallocated.
+ * If a null pointer is passed as argument, no action occurs.
+ */
+void	ft_free_ptr(void **ptr);
 
 #endif
