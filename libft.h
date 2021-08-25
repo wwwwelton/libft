@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/25 17:18:48 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/25 17:33:00 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -521,5 +521,14 @@ void	ft_free_ptr(void **ptr);
  * not found. If an error occurs, a null pointer is returned.
  */
 char	*ft_str_replace(const char *str, char *old_word, char *new_word);
+
+/**
+ * @brief Converts lowercase letters of the string to uppercase.
+ *
+ * @param str This is the string to be converted to uppercase.
+ * @return Returns the number of characters changed. Returns -1
+ * if the string is NULL.
+ */
+int	ft_str_toupper(char *str);
 
 #endif

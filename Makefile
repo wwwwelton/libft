@@ -8,7 +8,7 @@ SOURCES			+=	ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c
 SOURCES			+=	ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c
 SOURCES			+=	ft_tolower.c ft_toupper.c
 
-SOURCES			+=	ft_free_ptr.c ft_str_replace.c
+SOURCES			+=	ft_free_ptr.c ft_str_replace.c ft_str_toupper.c
 
 SOURCES_BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 SOURCES_BONUS	+=	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
