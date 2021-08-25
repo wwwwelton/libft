@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/25 17:45:14 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/25 18:10:40 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -540,5 +540,17 @@ int		ft_str_toupper(char *str);
  * second position.
  */
 char	*ft_char_tostr(unsigned char c);
+
+/**
+ * @brief Allocates with malloc and returns a string representing the
+ * number in the base received as an argument.
+ *
+ * @param n The number to convert.
+ * @param base This is the string representing which base the
+ * number will be converted to. Example "0123456789" for base 10.
+ * @return The string representing the number in the base passed as an
+ * argument. NULL if the allocation fails.
+ */
+char	*ft_uitoa_base(size_t n, char *base);
 
 #endif
