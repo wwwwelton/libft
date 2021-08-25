@@ -270,6 +270,37 @@ Each functions has the prefix "ft_" which means forty two.
             <td>Counts the number of elements in a list.</td>
         </tr>
     </tbody>
+    <thead>
+        <tr>
+            <th colspan=3><h4>Personal functions</h4></a></th>
+        </tr>
+        <tr>
+            <th>Libft</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href=ft_char_tostr.c>ft_char_tostr</a></td>
+            <td>Converts an unsigned char to a string.</td>
+        </tr>
+        <tr>
+            <td><a href=ft_free_ptr.c>ft_free_ptr</a></td>
+            <td>Deallocates a pointer memory address and sets to NULL.</td>
+        </tr>
+        <tr>
+            <td><a href=ft_str_replace.c>ft_str_replace</a></td>
+            <td>Searches for the first occurrence of the string old_word in the string str and replaces with the string new_word.</td>
+        </tr>
+        <tr>
+            <td><a href=ft_str_toupper.c>ft_str_toupper</a></td>
+            <td>Converts lowercase letters of the string to uppercase.</td>
+        </tr>
+        <tr>
+            <td><a href=ft_uitoa_base.c>ft_uitoa_base</a></td>
+            <td>Returns a string representing the number in the base received as an argument.</td>
+        </tr>
+    </tbody>
 </table>
 
 ## Updating

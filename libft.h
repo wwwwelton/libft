@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/25 18:10:40 by wleite           ###   ########.fr       */
+/*   Updated: 2021/08/25 18:17:06 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -532,7 +532,7 @@ char	*ft_str_replace(const char *str, char *old_word, char *new_word);
 int		ft_str_toupper(char *str);
 
 /**
- * @brief Converts a unsigned char to a string allocated with malloc.
+ * @brief Converts an unsigned char to a string allocated with malloc.
  *
  * @param c This is the unsigned char to be converted.
  * @return Returns a string, allocated with malloc with the character
