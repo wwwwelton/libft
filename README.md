@@ -298,7 +298,7 @@ Each functions has the prefix "ft_" which means forty two.
         </tr>
         <tr>
             <td><a href=ft_uitoa_base.c>ft_uitoa_base</a></td>
-            <td>Returns a string representing the number in the base received as an argument.</td>
+            <td>Returns a string representing the unsigned integer in the base received as an argument.</td>
         </tr>
     </tbody>
 </table>
