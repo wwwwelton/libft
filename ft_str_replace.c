@@ -6,13 +6,14 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 17:03:55 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/25 17:04:40 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/08 17:10:20 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_str_replace(const char *str, char *old_word, char *new_word)
+char	*ft_str_replace(const char *str,
+	const char *old_word, const char *new_word)
 {
 	char	*new_str;
 	char	*ptr;

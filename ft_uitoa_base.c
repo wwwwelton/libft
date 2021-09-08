@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 17:59:04 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/25 18:11:59 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/08 17:11:21 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static size_t	ft_count_digits(size_t n)
 	return (i);
 }
 
-char	*ft_uitoa_base(size_t n, char *base)
+char	*ft_uitoa_base(size_t n, const char *base)
 {
 	char	*str;
 	size_t	base_len;

@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/08/26 17:49:27 by wleite           ###   ########.fr       */
+/*   Updated: 2021/09/08 17:11:38 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -520,7 +520,8 @@ void	ft_free_ptr(void **ptr);
  * or a duplicate of the string pointed to by str in case old_word
  * not found. If an error occurs, a null pointer is returned.
  */
-char	*ft_str_replace(const char *str, char *old_word, char *new_word);
+char	*ft_str_replace(const char *str,
+			const char *old_word, const char *new_word);
 
 /**
  * @brief Converts lowercase letters of the string to uppercase.
@@ -551,6 +552,6 @@ char	*ft_char_tostr(unsigned char c);
  * @return The string representing the unsigned integer in the base passed as an
  * argument. NULL if the allocation fails.
  */
-char	*ft_uitoa_base(size_t n, char *base);
+char	*ft_uitoa_base(size_t n, const char *base);
 
 #endif
