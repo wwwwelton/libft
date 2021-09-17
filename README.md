@@ -301,7 +301,7 @@ Each functions has the prefix "ft_" which means forty two.
             <td>Returns a string representing the unsigned integer in the base received as an argument.</td>
         </tr>
         <tr>
-            <td><a href=get_next_line.c>get_next_line</a></td>
+            <td><a href=ft_get_next_line.c>ft_get_next_line</a></td>
             <td>Return a string including \n if is a line. In case of the file dont have \n return a string without \n, NULL if the file is empty or error occurred.</td>
         </tr>
     </tbody>
