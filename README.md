@@ -290,7 +290,7 @@ Each functions has the prefix "ft_" which means forty two.
         </tr>
         <tr>
             <td><a href=ft_str_replace.c>ft_str_replace</a></td>
-            <td>Searches for the first occurrence of the string old_word in the string str and replaces with the string new_word.</td>
+            <td>Searches for the first occurrence of the string old_word in the string str and replaces with the string new_word. The memory address of the string str passed as a parameter will be freed.</td>
         </tr>
         <tr>
             <td><a href=ft_str_toupper.c>ft_str_toupper</a></td>
