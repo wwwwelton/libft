@@ -32,29 +32,29 @@ RM				=	rm -rf
 CFLAGS			=	-Wall -Wextra -Werror
 ARFLAGS 		=	rcs
 
-$(OBJ_DIR)/%.o:	%.c $(HEADER)
-				$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o:		%.c $(HEADER)
+					$(CC) $(CFLAGS) -c $< -o $@
 
-all:			$(NAME)
+all:				$(NAME)
 
-bonus:			$(NAME_BONUS)
+bonus:				$(NAME_BONUS)
 
-$(NAME):		$(OBJ_DIR) $(OBJECTS) $(HEADER)
-				$(AR) $(ARFLAGS) $(NAME) $(OBJECTS)
+$(NAME):			$(OBJ_DIR) $(OBJECTS) $(HEADER)
+					$(AR) $(ARFLAGS) $(NAME) $(OBJECTS)
 
-$(NAME_BONUS):	$(NAME) $(OBJ_DIR) $(OBJECTS_BONUS) $(HEADER)
-				$(AR) $(ARFLAGS) $(NAME) $(OBJECTS_BONUS)
-				cp $(NAME) $(NAME_BONUS)
+$(NAME_BONUS):		$(NAME) $(OBJ_DIR) $(OBJECTS_BONUS) $(HEADER)
+					$(AR) $(ARFLAGS) $(NAME) $(OBJECTS_BONUS)
+					cp $(NAME) $(NAME_BONUS)
 
 $(OBJ_DIR):
-				mkdir -p $(OBJ_DIR)
+					mkdir -p $(OBJ_DIR)
 
 clean:
-				$(RM) $(OBJ_DIR)
+					$(RM) $(OBJ_DIR)
 
-fclean:			clean
-				$(RM) $(NAME) $(NAME_BONUS)
+fclean:				clean
+					$(RM) $(NAME) $(NAME_BONUS)
 
-re:				fclean all
+re:					fclean all
 
-.PHONY:			all clean fclean re bonus
+.PHONY:				all clean fclean re bonus
