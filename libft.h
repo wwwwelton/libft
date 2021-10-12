@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 19:25:46 by wleite            #+#    #+#             */
-/*   Updated: 2021/10/12 11:55:22 by wleite           ###   ########.fr       */
+/*   Updated: 2021/10/12 12:09:30 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -570,5 +570,16 @@ char	*ft_uitoa_base(size_t n, const char *base);
  * or error occurred.
  */
 char	*ft_get_next_line(int fd);
+
+/**
+ * @brief Allocates with malloc and returns a new string, which is the
+ * result of the concatenation of 's1' and 's2'. The memory address
+ * of 's1' and 's2' will be freed.
+ *
+ * @param s1 The prefix string.
+ * @param s2 The suffix string.
+ * @return The new string. NULL if the allocation fails.
+ */
+char	*ft_strmerge(char *s1, char *s2);
 
 #endif

@@ -281,7 +281,7 @@ Each functions has the prefix "ft_" which means forty two.
     </thead>
     <tbody>
         <tr>
-            <td><a href=ft_char_to_str.c>ft_char_tostr</a></td>
+            <td><a href=ft_char_to_str.c>ft_char_to_str</a></td>
             <td>Creates a string of size len filled with the unsigned char passed as parameter.</td>
         </tr>
         <tr>
@@ -295,6 +295,10 @@ Each functions has the prefix "ft_" which means forty two.
         <tr>
             <td><a href=ft_str_toupper.c>ft_str_toupper</a></td>
             <td>Converts lowercase letters of the string to uppercase.</td>
+        </tr>
+		 <tr>
+            <td><a href=ft_strmerge.c>ft_strmerge</a></td>
+            <td>Returns a new string, which is the result of the concatenation of 's1' and 's2'. The memory address of 's1' and 's2' will be freed.</td>
         </tr>
         <tr>
             <td><a href=ft_uitoa_base.c>ft_uitoa_base</a></td>
