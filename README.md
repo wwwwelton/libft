@@ -281,8 +281,8 @@ Each functions has the prefix "ft_" which means forty two.
     </thead>
     <tbody>
         <tr>
-            <td><a href=ft_char_tostr.c>ft_char_tostr</a></td>
-            <td>Converts an unsigned char to a string.</td>
+            <td><a href=ft_char_to_str.c>ft_char_tostr</a></td>
+            <td>Creates a string of size len filled with the unsigned char passed as parameter.</td>
         </tr>
         <tr>
             <td><a href=ft_free_ptr.c>ft_free_ptr</a></td>
