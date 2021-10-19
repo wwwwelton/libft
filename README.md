@@ -280,6 +280,10 @@ Each functions has the prefix "ft_" which means forty two.
         </tr>
     </thead>
     <tbody>
+		 <tr>
+            <td><a href=ft_atol.c>ft_atol</a></td>
+            <td>Converts the string to a long integer (type long int).</td>
+        </tr>
         <tr>
             <td><a href=ft_char_to_str.c>ft_char_to_str</a></td>
             <td>Creates a string of size len filled with the unsigned char passed as parameter.</td>
